@@ -56,3 +56,4 @@ reuse_cache_from = "auto" # reaproveita traduções de outro backend
 #python mbtr.py translate --config config.toml --limit 30   # teste curto
 #python mbtr.py translate --config config.toml   # tudo
 #python mbtr.py check     --config config.toml   # confere códigos e linhas faltando
+#Select-String -Path languages\en\*.csv -Pattern 'X\s*\d+\s*X' | Measure-Object - testar se XNX roda no mod, essencial para ter uma tradução melhor com argos

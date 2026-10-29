@@ -23,8 +23,19 @@ COND_RE = re.compile(r"^\{(!?(?:reg|s)\d+|playername)\?([^{}:?]*):([^{}:?]*)\}$"
 # {sir/madam} {his/her}  -> escolha por gênero, ramos traduzíveis
 SLASH_RE = re.compile(r"^\{([A-Za-z][^{}/?:]*)/([^{}/?:]*)\}$")
 
-TOKEN_FMT = "⟦{}⟧"
-TOKEN_RE = re.compile(r"⟦(\d+)⟧")
+STYLES = {
+    "math": ("⟦{}⟧", r"⟦\s*(\d+)\s*⟧"),   # padrão: translators e Ollama
+    "xnx":  ("X{}X", r"X\s*(\d+)\s*X"),    # Argos
+}
+TOKEN_FMT, _pat = STYLES["math"]
+TOKEN_RE = re.compile(_pat)
+
+
+def set_token_style(name: str) -> None:
+    """Troca o formato do marcador (chamado uma vez, no início do programa)."""
+    global TOKEN_FMT, TOKEN_RE
+    TOKEN_FMT, pat = STYLES[name]
+    TOKEN_RE = re.compile(pat)
 
 
 @dataclass
@@ -49,7 +60,12 @@ def read_csv(path: Path) -> LocFile:
     except UnicodeDecodeError:
         text = data.decode("cp1252")
     lf = LocFile(path=path, bom=bom)
-    for raw in text.splitlines():
+    # Só \n separa linhas. splitlines() também corta em \x0b, \x0c, \x85 e
+    # \u2028, que podem aparecer dentro de um texto do mod.
+    lines = text.split("\n")
+    if lines and lines[-1] == "":
+        lines.pop()  # a quebra final do arquivo não é uma linha extra
+    for raw in (ln.rstrip("\r") for ln in lines):
         if "|" in raw and not raw.lstrip().startswith("#"):
             key, _, val = raw.partition("|")
             lf.entries.append(Entry(key.strip(), val, raw))

@@ -201,8 +201,9 @@ def check_pair(src_text: str, dst_text: str) -> list[str]:
         probs.append("escolha de gênero/condição sumiu ou duplicou")
     if "|" in dst_text:
         probs.append("contém |")
-    if "⟦" in dst_text or "⟧" in dst_text:
-        probs.append("sobrou marcador ⟦⟧")
+    if ("⟦" in dst_text or "⟧" in dst_text
+            or (mbloc.TOKEN_RE.search(dst_text) and not mbloc.TOKEN_RE.search(src_text))):
+        probs.append("sobrou marcador de código")
     return probs
 
 
@@ -256,6 +257,9 @@ def main(argv=None):
     ap.add_argument("--file", help="traduz só este arquivo, ex.: dialogs.csv")
     args = ap.parse_args(argv)
     cfg = load_config(args.config)
+    e = cfg.get("engine", {})
+    mbloc.set_token_style(e.get("token_style",
+                                "xnx" if e.get("backend", "translators") == "argos" else "math"))
     return {"scan": cmd_scan, "translate": cmd_translate, "check": cmd_check,
             "glossary": cmd_glossary}[args.command](cfg, args) or 0
 

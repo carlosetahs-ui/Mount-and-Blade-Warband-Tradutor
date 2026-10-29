@@ -7,7 +7,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import mbloc
 import mbtr
-from translator import BlockedError, Cache, RateLimiter, Translator, TranslatorsBackend, Backend
+from translator import (BlockedError, Cache, RateLimiter, Translator,
+                        TranslatorsBackend, Backend, TextTooLongError)
 
 
 class FakeBackend(Backend):
@@ -175,6 +176,81 @@ class FileTests(unittest.TestCase):
         self.assertTrue(mbtr.check_pair("a {s0}", "a"))
         self.assertFalse(mbtr.check_pair("{sir/madam} {s0}", "{senhor/senhora} {s0}"))
 
+class TwoProviders(Backend):
+    """Primeiro provider come os tokens; o segundo traduz certo."""
+    name = "two"
+
+    def __init__(self):
+        self.i = 0
+
+    def translate(self, text):
+        out = fake_mt(text)
+        return mbloc.TOKEN_RE.sub("", out) if self.i == 0 else out
+
+    def next_provider(self):
+        if self.i == 0:
+            self.i = 1
+            return True
+        return False
+
+
+class RobustnessTests(unittest.TestCase):
+    def test_token_with_spaces_stays_plan_a(self):  # correção 1
+        t = Translator(FakeBackend(lambda s: fake_mt(s).replace("⟦0⟧", "⟦ 0 ⟧")))
+        self.assertEqual(t.translate("Hello {s0}"), "Olá {s0}")
+        self.assertEqual(t.stats["planC"], 0)
+
+    def test_empty_output_keeps_original(self):  # correções 3 e 4
+        t = Translator(FakeBackend(lambda s: ""), log=lambda *_: None)
+        self.assertEqual(t.translate("Hello there"), "Hello there")
+
+    def test_plan_b_switches_provider(self):
+        t = Translator(TwoProviders())
+        self.assertEqual(t.translate("Hello {s0}"), "Olá {s0}")
+        self.assertEqual(t.stats["planB"], 1)
+
+    def test_segment_drops_added_period_and_capital(self):  # correção 4
+        t = Translator(FakeBackend(lambda s: "Meu senhor."))
+        self.assertEqual(t._segment("my lord"), "meu senhor")
+
+    def test_gl_hash_only_for_context_backends(self):  # correção 5
+        t = Translator(FakeBackend(fake_mt), glossary={"Swadia": "Suádia"})
+        self.assertEqual(t.gl_hash, "")
+
+    def test_read_csv_keeps_odd_separators(self):  # correção 6
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "a.csv"
+            p.write_bytes("a|um\u2028dois\nb|tres\r\n".encode("utf-8"))
+            got = [(e.key, e.text) for e in mbloc.read_csv(p).entries]
+            self.assertEqual(got, [("a", "um\u2028dois"), ("b", "tres")])
+
+    def test_too_long_goes_to_plan_c(self):  # correção 8
+        def mt(s):
+            if len(s) > 20:
+                raise TextTooLongError("longo")
+            return fake_mt(s)
+        t = Translator(FakeBackend(mt))
+        self.assertEqual(t.translate("Hello {s0}, welcome to {s1}."),
+                         "Olá {s0}, bem-vindo a {s1}.")
+        self.assertEqual(t.stats["planC"], 1)
+
+    def test_backend_refuses_long_text(self):  # correção 8
+        b = TranslatorsBackend(providers=["bing"], api=lambda t, p: t, max_chars=5)
+        with self.assertRaises(TextTooLongError):
+            b.translate("123456")
+
+
+class TokenStyleTests(unittest.TestCase):
+    def test_xnx_style_roundtrip(self):
+        mbloc.set_token_style("xnx")
+        try:
+            m, subs = mbloc.mask("Hand {s0} over to {s1}.")
+            self.assertEqual(m, "Hand X0X over to X1X.")
+            self.assertTrue(mbloc.tokens_ok(m, "Mão X 0 X para X1X."))
+            self.assertFalse(mbloc.tokens_ok(m, "Mão X0X para."))
+            self.assertEqual(mbloc.unmask(m, subs), "Hand {s0} over to {s1}.")
+        finally:
+            mbloc.set_token_style("math")
 
 if __name__ == "__main__":
     unittest.main()

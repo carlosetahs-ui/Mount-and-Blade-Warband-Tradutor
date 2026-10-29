@@ -21,6 +21,9 @@ PROMPT_VERSION = "mb1"
 class BlockedError(Exception):
     """Serviço recusou (429/403/captcha)."""
 
+class TextTooLongError(Exception):
+    """Texto maior que max_chars do backend (vai para o Plano C)."""
+
 
 # ---------------------------------------------------------------- limitador
 class RateLimiter:
@@ -128,7 +131,7 @@ class ArgosBackend(Backend):
 
 
 class TranslatorsBackend(Backend):
-    """Biblioteca `translators` com rotação de serviços (sem Google por padrão)."""
+    """Biblioteca `translators` com rotação de serviços."""
     name = "translators"
 
     def __init__(self, providers=("bing", "alibaba", "yandex", "baidu"), src="en", dst="pt",
@@ -178,7 +181,8 @@ class TranslatorsBackend(Backend):
         return any(k in s for k in ("429", "403", "too many", "captcha", "blocked", "forbidden"))
 
     def translate(self, text):
-        text = text[: self.max_chars]
+        if len(text) > self.max_chars:
+            raise TextTooLongError(f"texto com {len(text)} caracteres (máximo {self.max_chars})")
         attempt = 0
         while True:
             p = self._pick()
@@ -246,7 +250,10 @@ class Translator:
                  translate_branches=True, log=print):
         self.b, self.cache, self.context = backend, cache, context
         self.glossary = glossary or {}
-        self.gl_hash = hashlib.sha1(json.dumps(self.glossary, sort_keys=True).encode()).hexdigest()[:12]
+        self.gl_hash = (
+            hashlib.sha1(json.dumps(self.glossary, sort_keys=True).encode()).hexdigest()[:12]
+            if getattr(backend, "accepts_context", False) else ""
+        )
         self.reuse, self.branches, self.log = reuse_cache, translate_branches, log
         self.stats = {"ok": 0, "cache": 0, "planB": 0, "planC": 0, "fail": 0, "skip": 0}
 
@@ -257,19 +264,26 @@ class Translator:
                 self.stats["cache"] += 1
                 return hit
         out = self.b.translate(masked)
-        if self.cache and mbloc.tokens_ok(masked, out):
+        if self.cache and out.strip() and mbloc.tokens_ok(masked, out):
             self.cache.put(self.b.engine_id, masked, self.context, self.gl_hash, out)
         return out
 
     def _segment(self, text: str) -> str:
-        """Traduz um trecho sem tokens (Plano C)."""
+        """Traduz um trecho sem tokens (Plano C e ramos de gênero)."""
         lead = text[: len(text) - len(text.lstrip())]
         trail = text[len(text.rstrip()):]
         core = text.strip()
         if not mbloc.has_letters(core):
             return text
-        out = self._raw(core)
-        return lead + mbloc.TOKEN_RE.sub("", out).strip() + trail
+        out = mbloc.TOKEN_RE.sub("", self._raw(core)).strip()
+        if not out:
+            return text  # tradução vazia: mantém o original
+        if (not core.endswith((".", "!", "?")) and out.endswith(".")
+                and not out.endswith("..")):
+            out = out[:-1]
+        if core[:1].islower() and out[:1].isupper():
+            out = out[0].lower() + out[1:]
+        return lead + out + trail
 
     def _branches(self, subs: list[str]) -> list[str]:
         if not self.branches:
@@ -297,21 +311,28 @@ class Translator:
         masked, subs = mbloc.mask(text, self.glossary)
         subs = self._branches(subs)
         cached_before = self.stats["cache"]
-        # Plano A
-        try:
-            out = self._raw(masked)
-            if mbloc.tokens_ok(masked, out):
+        try:   # Plano A
+            too_long = False
+            try:
+                out = self._raw(masked)
+            except TextTooLongError:
+                too_long = True  # frase grande demais: vai direto para o Plano C
+                out = ""
+            if out.strip() and mbloc.tokens_ok(masked, out):
                 if self.stats["cache"] == cached_before:
                     self.stats["ok"] += 1
                 return mbloc.clean_output(mbloc.unmask(out, subs))
             # Plano B: troca de serviço e tenta de novo
-            if self.b.next_provider():
-                out = self.b.translate(masked)
-                if mbloc.tokens_ok(masked, out):
-                    self.stats["planB"] += 1
-                    if self.cache:
-                        self.cache.put(self.b.engine_id, masked, self.context, self.gl_hash, out)
-                    return mbloc.clean_output(mbloc.unmask(out, subs))
+            if not too_long and self.b.next_provider():
+                try:
+                    out = self.b.translate(masked)
+                    if out.strip() and mbloc.tokens_ok(masked, out):
+                        self.stats["planB"] += 1
+                        if self.cache:
+                            self.cache.put(self.b.engine_id, masked, self.context, self.gl_hash, out)
+                        return mbloc.clean_output(mbloc.unmask(out, subs))
+                except Exception as e:  # noqa: BLE001
+                    self.log(f"  ! plano B falhou, indo para o plano C: {e}")
             # Plano C: só o texto entre os códigos
             parts = [self._segment(t) if is_txt else t for is_txt, t in mbloc.split_segments(masked)]
             self.stats["planC"] += 1
