@@ -119,11 +119,13 @@ class AntiBanTests(unittest.TestCase):
         now = [0.0]
         def sleep(s): now[0] += s
         lim = RateLimiter(per_minute=0, per_hour=0, pause=(0, 0), long_every=0, clock=lambda: now[0], sleep=sleep)
-        return TranslatorsBackend(providers=["google", "bing", "yandex"], limiter=lim, api=api,
+        return TranslatorsBackend(providers=["bing", "yandex"], limiter=lim, api=api,
                                   clock=lambda: now[0], sleep=sleep)
 
-    def test_google_removed(self):
-        self.assertEqual(self._backend(lambda t, p: t).providers, ["bing", "yandex"])
+    def test_providers_kept(self):
+        b = TranslatorsBackend(providers=["google", "bing", "yandex"], api=lambda t, p: t)
+        self.assertEqual(b.providers, ["google", "bing", "yandex"])
+
 
     def test_rotates_when_blocked(self):
         used = []

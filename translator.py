@@ -134,7 +134,7 @@ class TranslatorsBackend(Backend):
     def __init__(self, providers=("bing", "alibaba", "yandex", "baidu"), src="en", dst="pt",
                  limiter: RateLimiter | None = None, cooldown=600, max_retries=4, max_chars=3000,
                  api: Callable | None = None, clock=time.monotonic, sleep=time.sleep):
-        self.providers = [p for p in providers if p != "google"]
+        self.providers = list(providers)
         if not self.providers:
             raise ValueError("Nenhum provider configurado.")
         self.src, self.dst = src, dst

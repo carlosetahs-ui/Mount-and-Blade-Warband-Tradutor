@@ -85,33 +85,44 @@ Configure o motor desejado na chave `backend` do `config.toml`:
 ```bash
 git clone https://github.com/seu-usuario/mb_tradutor.git
 cd mb_tradutor
+```
 
-
-3. Instalação das Bibliotecas
+### 3. Instalação das Bibliotecas
 Instale apenas as dependências do backend que você pretende usar:
 
-Para usar o Argos Translate (100% Offline):
+#### Para usar o Argos Translate (100% Offline):
+```bash
 pip install argostranslate
-(O modelo de dados inglês-português é baixado automaticamente pelo script na primeira execução).
+```
+*(O modelo de dados inglês-português é baixado automaticamente pelo script na primeira execução).*
 
-Para usar o Translators (Motores Web: Bing, Google, etc.):
+#### Para usar o Translators (Motores Web: Bing, Google, etc.):
+```bash
 pip install translators
+```
 
-Para usar o Ollama (Inteligência Artificial Local):
-Instale o Ollama em ollama.com.
-Baixe o modelo recomendado no terminal:
+#### Para usar o Ollama (Inteligência Artificial Local):
+1. Instale o Ollama em [ollama.com](https://ollama.com/).
+2. Baixe o modelo recomendado no terminal:
+```bash
 ollama pull qwen2.5:7b
+```
 
+---
 
-⚙️ Configuração (config.toml)
+## ⚙️ Configuração (`config.toml`)
+
 Copie o modelo de exemplo:
+```bash
 # Windows
 copy config.example.toml config.toml
 
 # Linux / Mac
 cp config.example.toml config.toml
+```
 
-Edite o arquivo config.toml:
+Edite o arquivo `config.toml`:
+```toml
 [mod]
 # Caminho da pasta do mod (use aspas simples no Windows)
 path = 'C:\Program Files (x86)\Steam\steamapps\common\MountBlade Warband\Modules\NomeDoMod'
@@ -154,10 +165,10 @@ timeout = 180
 file = "cache.sqlite"
 commit_every = 1          # Salva frase por frase em tempo real
 reuse_cache_from = "auto" # Aproveita o cache mesmo se trocar de motor
+```
 
-
-💡 Dica para caminhos no Windows:
-Se a pasta do mod tiver caracteres especiais ou espaços complexos, você pode simplesmente copiar a pasta languages do mod para dentro do diretório do tradutor e definir path = '.' no config.toml.
+> 💡 **Dica para caminhos no Windows:**  
+> Se a pasta do mod tiver caracteres especiais ou espaços complexos, você pode simplesmente copiar a pasta `languages` do mod para dentro do diretório do tradutor e definir `path = '.'` no `config.toml`.
 
 
 🚀 Comandos e Modo de Uso
