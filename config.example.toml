@@ -25,8 +25,7 @@ backend = "translators"   # translators | ollama | argos
 target_code = "pt"
 
 [engine.translators]
-# Google fica de fora de propósito.
-providers = ["bing", "alibaba", "yandex", "baidu"]
+providers = ["google", "bing", "alibaba", "yandex", "baidu"]
 max_per_minute = 20
 max_per_hour = 600
 pause = [1.5, 4.0]        # pausa aleatória entre pedidos (s)
@@ -50,3 +49,10 @@ auto_install = true       # baixa o pacote en->pt na primeira vez
 file = "cache.sqlite"
 commit_every = 1          # grava cada frase na hora (não perde nada se parar)
 reuse_cache_from = "auto" # reaproveita traduções de outro backend
+
+#copy config.example.toml config.toml        (ajuste o caminho do mod)
+#python mbtr.py scan      --config config.toml   # conta linhas, códigos e tempo estimado
+#python mbtr.py glossary  --config config.toml   # sugere nomes (tropas, facções, cidades)
+#python mbtr.py translate --config config.toml --limit 30   # teste curto
+#python mbtr.py translate --config config.toml   # tudo
+#python mbtr.py check     --config config.toml   # confere códigos e linhas faltando
