@@ -1,0 +1,34 @@
+# Cache do tradutor (SQLite)
+cache.sqlite
+cache.sqlite-journal
+cache.sqlite-wal
+cache.sqlite-shm
+*.sqlite
+*.db
+
+# Configuração local
+config.toml
+
+# Pastas de saída das traduções
+saida/
+
+# Pasta de idiomas do mod copiada para dentro do projeto
+languages/
+
+# Arquivos CSV de tradução gerados ou copiados localmente
+*.csv
+
+# Pacotes compactados de mods traduzidos
+*.zip
+*.rar
+*.7z
+
+# Python (compilações temporárias no Windows)
+__pycache__/
+*.pyc
+
+# Arquivos ocultos e temporários do Windows
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
