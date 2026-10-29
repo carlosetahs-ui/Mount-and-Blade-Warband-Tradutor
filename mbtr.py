@@ -204,6 +204,9 @@ def check_pair(src_text: str, dst_text: str) -> list[str]:
     if ("⟦" in dst_text or "⟧" in dst_text
             or (mbloc.TOKEN_RE.search(dst_text) and not mbloc.TOKEN_RE.search(src_text))):
         probs.append("sobrou marcador de código")
+    if (dst_text.count("{") != src_text.count("{")
+            or dst_text.count("}") != src_text.count("}")):
+        probs.append("chaves { } diferentes do original")
     return probs
 
 

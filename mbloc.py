@@ -16,7 +16,9 @@ from pathlib import Path
 #  {s0} {reg12} {playername} {s1?a:b} {sir/madam}
 #  ^  (quebra de linha no Warband)
 #  %d %s (raros, em alguns mods)
-MARKER_RE = re.compile(r"\{[^{}]*\}|\^|%[0-9]*[ds](?:%%)?|<c=[^>]*>|</c>|\\n")
+MARKER_RE = re.compile(
+    r"\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}|\^|%[0-9]*[ds](?:%%)?|<c=[^>]*>|</c>|\\n"
+)
 
 # {reg1?plural:singular} / {s3?texto:outro}  -> ramos traduzíveis
 COND_RE = re.compile(r"^\{(!?(?:reg|s)\d+|playername)\?([^{}:?]*):([^{}:?]*)\}$")

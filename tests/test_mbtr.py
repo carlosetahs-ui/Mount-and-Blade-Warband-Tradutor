@@ -252,5 +252,25 @@ class TokenStyleTests(unittest.TestCase):
         finally:
             mbloc.set_token_style("math")
 
+
+class NestedBraceTests(unittest.TestCase):
+    def test_nested_conditional_is_one_marker(self):
+        s = "It looks like {reg1?Each costs {reg0} aurums.:} Done."
+        self.assertEqual(mbloc.markers(s), ["{reg1?Each costs {reg0} aurums.:}"])
+        out = Translator(FakeBackend(fake_mt)).translate(s)
+        self.assertIn("{reg1?Each costs {reg0} aurums.:}", out)
+
+    def test_three_levels_is_one_marker(self):
+        s = "{reg6?I:{reg7?You:{s11}}} will be the new lord."
+        self.assertEqual(mbloc.markers(s), ["{reg6?I:{reg7?You:{s11}}}"])
+
+    def test_simple_conditional_still_translated(self):
+        out = Translator(FakeBackend(fake_mt)).translate("You have {reg1?men:man}.")
+        self.assertIn("{reg1?homens:homem}", out)
+
+    def test_check_flags_unbalanced_braces(self):
+        self.assertTrue(mbtr.check_pair("a {reg1?b {s0}:c}", "a {reg1?b {s0}:c"))
+        self.assertFalse(mbtr.check_pair("a {reg1?b {s0}:c}", "a {reg1?b {s0}:c}"))
+
 if __name__ == "__main__":
     unittest.main()
