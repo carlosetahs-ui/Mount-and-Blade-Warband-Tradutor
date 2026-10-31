@@ -136,19 +136,21 @@ class TranslatorsBackend(Backend):
 
     def __init__(self, providers=("bing", "alibaba", "yandex", "baidu"), src="en", dst="pt",
                  limiter: RateLimiter | None = None, cooldown=600, max_retries=4, max_chars=3000,
-                 api: Callable | None = None, clock=time.monotonic, sleep=time.sleep):
+                 timeout=15, api: Callable | None = None, clock=time.monotonic, sleep=time.sleep):
         self.providers = list(providers)
         if not self.providers:
             raise ValueError("Nenhum provider configurado.")
         self.src, self.dst = src, dst
         self.limiter = limiter or RateLimiter()
         self.cooldown, self.max_retries, self.max_chars = cooldown, max_retries, max_chars
+        self.timeout = timeout
         self.clock, self.sleep = clock, sleep
         self.blocked_until: dict[str, float] = {}
         self.idx = 0
         if api is None:
             import translators as ts
-            api = lambda text, p: ts.translate_text(text, translator=p, from_language=self.src, to_language=self.dst)
+            api = lambda text, p: ts.translate_text(text, translator=p, from_language=self.src, to_language=self.dst,  timeout=self.timeout
+        )
         self.api = api
 
     @property

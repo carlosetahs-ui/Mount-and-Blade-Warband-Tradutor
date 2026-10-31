@@ -26,6 +26,7 @@ target_code = "pt"
 
 [engine.translators]
 providers = ["google", "bing", "alibaba", "yandex", "baidu"]
+timeout = 15
 max_per_minute = 20
 max_per_hour = 600
 pause = [1.5, 4.0]        # pausa aleatória entre pedidos (s)

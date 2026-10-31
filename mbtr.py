@@ -113,7 +113,8 @@ def make_backend(cfg, glossary):
                           long_every=t.get("long_every", 80))
         return TranslatorsBackend(providers=t.get("providers", ["bing", "alibaba", "yandex", "baidu"]),
                                   src=src, dst=dst, limiter=lim, cooldown=t.get("cooldown", 600),
-                                  max_retries=t.get("max_retries", 4), max_chars=t.get("max_chars", 3000))
+                                  max_retries=t.get("max_retries", 4), max_chars=t.get("max_chars", 3000),
+                                  timeout=t.get("timeout", 15))
     sys.exit(f"backend desconhecido: {kind} (use ollama, argos ou translators)")
 
 
