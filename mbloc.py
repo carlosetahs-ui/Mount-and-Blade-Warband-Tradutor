@@ -17,7 +17,7 @@ from pathlib import Path
 #  ^  (quebra de linha no Warband)
 #  %d %s (raros, em alguns mods)
 MARKER_RE = re.compile(
-    r"\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}|\^|%[0-9]*[ds](?:%%)?|<c=[^>]*>|</c>|\\n"
+    r"\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}|\^|%[0-9]*[ds](?:%%)?|%%|<c=[^>]*>|</c>|\\n"
 )
 
 # {reg1?plural:singular} / {s3?texto:outro}  -> ramos traduzíveis
