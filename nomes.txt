@@ -1,2 +1,2 @@
-# um nome por linha
-Calradia
+# nomes.txt - Nomes próprios que NÃO devem ser traduzidos (preservados intactos)
+# Um nome por linha

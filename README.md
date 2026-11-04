@@ -165,6 +165,11 @@ timeout = 180
 file = "cache.sqlite"
 commit_every = 1          # Salva frase por frase em tempo real
 reuse_cache_from = "auto" # Aproveita o cache mesmo se trocar de motor
+
+[revision]
+ptbr_fix = true                    # Corrige PT-PT para PT-BR (vocabulário, gramática)
+replacements_file = "substituicoes.txt"  # Arquivo com substituições personalizadas
+backends = ["argos"]               # Aplica revisão apenas nestes backends (vazio = todos)
 ```
 
 > 💡 **Dica para caminhos no Windows:**  
@@ -223,7 +228,38 @@ No inicializador do Warband (Launcher), vá em Configure > Game > Language e sel
 Ou altere diretamente em Documentos/Mount&Blade Warband/language.txt escrevendo pt.
 
 
-🔧 Solução de Problemas Comuns (Troubleshooting)
+� Sistema de Revisão Pós-Tradução
+O tradutor inclui um sistema automático de revisão que corrige inconsistências comuns após a tradução:
+
+Correções Automáticas PT-PT → PT-BR:
+Vocabulário: partilhar → compartilhar, equipa → equipe, facto → fato, ecrã → tela, etc.
+Grafias antigas pré-acordo ortográfico: acção → ação, direcção → direção, protecção → proteção, etc.
+Gerúndios: está a fazer → está fazendo
+Pronomes enclíticos: impressionam-me → me impressionam (no meio da frase)
+
+Substituições Personalizadas:
+Crie um arquivo substituicoes.txt com o formato errado = certo (ou tabulação) para adicionar suas próprias correções:
+errado1 = correto1
+errado2 = correto2
+Este arquivo é aplicado após a tradução e antes das correções automáticas PT-PT → PT-BR.
+
+Configuração por Backend:
+Por padrão, a revisão é aplicada apenas ao backend Argos, que é o que mais mistura PT-PT com PT-BR. Você pode configurar quais backends devem receber a revisão:
+
+[revision]
+ptbr_fix = true                    # Ativa/Desativa correções PT-PT → PT-BR
+replacements_file = "substituicoes.txt"  # Arquivo de substituições personalizadas
+backends = ["argos"]               # Aplica revisão apenas nestes backends (vazio = todos)
+
+Opções de backends:
+- ["argos"] - Apenas Argos (recomendado)
+- ["translators"] - Apenas motores web
+- ["ollama"] - Apenas Ollama
+- [] - Aplica em todos os backends
+- ["argos", "translators"] - Aplica em múltiplos backends
+
+
+�🔧 Solução de Problemas Comuns (Troubleshooting)
 1. Caracteres acentuados cortados ou invisíveis (Fontes customizadas)
 Muitos mods de fantasia ou medievais (Perisno, Prophesy of Pendor, etc.) incluem fontes temáticas próprias (font.dds) que não possuem os glifos acentuados da língua portuguesa (ã, é, ç, etc.).
 Solução Segura (Fallback para a Fonte Padrão):
@@ -274,9 +310,11 @@ mb_tradutor/
 ├── mbtr.py                 # Interface CLI e orquestrador principal
 ├── mbloc.py                # Leitura/escrita de CSV e regex de proteção de códigos
 ├── translator.py           # Classes dos backends (Argos, Ollama, Translators) e Cache
+├── revisao.py              # Sistema de revisão pós-tradução (PT-PT → PT-BR)
 ├── config.example.toml     # Modelo de configuração comentado
 ├── glossario.tsv           # Dicionário de termos forçados
 ├── nomes.txt               # Lista de nomes próprios mantidos no original
+├── substituicoes.txt       # Substituições personalizadas de pós-tradução
 ├── tests/                  # Testes unitários de preservação sintática
 │   └── test_mbtr.py
 └── README.md

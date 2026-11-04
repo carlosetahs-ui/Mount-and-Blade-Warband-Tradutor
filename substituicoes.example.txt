@@ -1,0 +1,15 @@
+# Arquivo de substituições personalizadas para pós-tradução
+# Formato: errado = certo (ou tabulação: errado<TAB>certo)
+# Este arquivo é aplicado após a tradução e antes das correções PT-PT -> PT-BR
+# Uma substituição por linha. Linhas começando com # são ignoradas.
+
+# Exemplos de uso:
+# sword = espada
+# shield = escudo
+# knight = cavaleiro
+# lord = senhor
+# lady = senhora
+# kingdom = reino
+# village = vila
+# castle = castelo
+# town = cidade

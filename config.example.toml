@@ -51,6 +51,13 @@ file = "cache.sqlite"
 commit_every = 1          # grava cada frase na hora (não perde nada se parar)
 reuse_cache_from = "auto" # reaproveita traduções de outro backend
 
+[revision]
+ptbr_fix = true                    # corrige PT-PT para PT-BR (vocabulário, gramática)
+replacements_file = "substituicoes.txt"  # arquivo com substituições personalizadas (errado = certo)
+# Aplica revisão apenas nestes backends (vazio = aplica em todos)
+# Recomendado: ["argos"] - só o Argos mistura PT-PT com PT-BR
+backends = ["argos"]
+
 #copy config.example.toml config.toml        (ajuste o caminho do mod)
 #python mbtr.py scan      --config config.toml   # conta linhas, códigos e tempo estimado
 #python mbtr.py glossary  --config config.toml   # sugere nomes (tropas, facções, cidades)

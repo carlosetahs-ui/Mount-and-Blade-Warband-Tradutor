@@ -9,6 +9,11 @@ cache.sqlite-shm
 # Configuração local
 config.toml
 
+# Arquivos de glossário e substituições (personalizáveis por usuário)
+glossario.tsv
+nomes.txt
+substituicoes.txt
+
 # Pastas de saída das traduções
 saida/
 

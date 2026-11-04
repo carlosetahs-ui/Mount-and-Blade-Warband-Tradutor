@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Callable
 
 import mbloc
+import revisao
 
 PROMPT_VERSION = "mb1"
 
@@ -249,7 +250,7 @@ class Cache:
 class Translator:
     def __init__(self, backend: Backend, cache: Cache | None = None, context="",
                  glossary: dict[str, str] | None = None, reuse_cache=True,
-                 translate_branches=True, log=print):
+                 translate_branches=True, log=print, post_edit: Callable[[str], str] | None = None):
         self.b, self.cache, self.context = backend, cache, context
         self.glossary = glossary or {}
         self.gl_hash = (
@@ -257,6 +258,7 @@ class Translator:
             if getattr(backend, "accepts_context", False) else ""
         )
         self.reuse, self.branches, self.log = reuse_cache, translate_branches, log
+        self.post_edit = post_edit
         self.stats = {"ok": 0, "cache": 0, "planB": 0, "planC": 0, "fail": 0, "skip": 0}
 
     def _raw(self, masked: str) -> str:
@@ -323,7 +325,8 @@ class Translator:
             if out.strip() and mbloc.tokens_ok(masked, out):
                 if self.stats["cache"] == cached_before:
                     self.stats["ok"] += 1
-                return mbloc.clean_output(mbloc.unmask(out, subs))
+                result = mbloc.clean_output(mbloc.unmask(out, subs))
+                return self.post_edit(result) if self.post_edit else result
             # Plano B: troca de serviço e tenta de novo
             if not too_long and self.b.next_provider():
                 try:
@@ -332,13 +335,15 @@ class Translator:
                         self.stats["planB"] += 1
                         if self.cache:
                             self.cache.put(self.b.engine_id, masked, self.context, self.gl_hash, out)
-                        return mbloc.clean_output(mbloc.unmask(out, subs))
+                        result = mbloc.clean_output(mbloc.unmask(out, subs))
+                        return self.post_edit(result) if self.post_edit else result
                 except Exception as e:  # noqa: BLE001
                     self.log(f"  ! plano B falhou, indo para o plano C: {e}")
             # Plano C: só o texto entre os códigos
             parts = [self._segment(t) if is_txt else t for is_txt, t in mbloc.split_segments(masked)]
             self.stats["planC"] += 1
-            return mbloc.clean_output(mbloc.unmask("".join(parts), subs))
+            result = mbloc.clean_output(mbloc.unmask("".join(parts), subs))
+            return self.post_edit(result) if self.post_edit else result
         except Exception as e:  # noqa: BLE001
             self.stats["fail"] += 1
             self.log(f"  ! falhou, mantendo original: {e}")

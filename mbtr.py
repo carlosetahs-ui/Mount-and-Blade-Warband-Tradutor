@@ -22,6 +22,7 @@ except ModuleNotFoundError:  # Python < 3.11
     import tomli as tomllib  # type: ignore
 
 import mbloc
+import revisao
 from translator import (ArgosBackend, Cache, OllamaBackend, RateLimiter,
                         TranslatorsBackend, Translator)
 
@@ -142,9 +143,23 @@ def cmd_translate(cfg, args):
     glossary = load_glossary(cfg)
     cache = Cache(rel(cfg, cfg.get("cache", {}).get("file", "cache.sqlite")),
                   commit_every=cfg.get("cache", {}).get("commit_every", 1))
-    tr = Translator(make_backend(cfg, glossary), cache, context=cfg["mod"].get("context", ""),
+
+    # Configuração de revisão pós-tradução
+    rev_cfg = cfg.get("revision", {})
+    ptbr_fix = rev_cfg.get("ptbr_fix", True)
+    repl_file = rev_cfg.get("replacements_file")
+    replacements = revisao.load_replacements(rel(cfg, repl_file)) if repl_file else None
+    revision_backends = rev_cfg.get("backends", [])  # Lista vazia = aplica em todos
+
+    backend = make_backend(cfg, glossary)
+    # Verifica se a revisão deve ser aplicada para este backend
+    apply_revision = not revision_backends or backend.name in revision_backends
+    post_edit = revisao.build(ptbr_fix=ptbr_fix, replacements=replacements) if apply_revision else None
+
+    tr = Translator(backend, cache, context=cfg["mod"].get("context", ""),
                     glossary=glossary, reuse_cache=cfg.get("cache", {}).get("reuse_cache_from", "auto") == "auto",
-                    translate_branches=cfg["mod"].get("translate_gender_choices", True))
+                    translate_branches=cfg["mod"].get("translate_gender_choices", True),
+                    post_edit=post_edit)
     skip_ids = skip_id_patterns(cfg)
     keep_existing = cfg["mod"].get("keep_existing", True)
     budget = args.limit
