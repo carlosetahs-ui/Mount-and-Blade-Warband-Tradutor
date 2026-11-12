@@ -9,6 +9,7 @@ termos do glossário nunca são tocados).
 from __future__ import annotations
 
 import re
+import sys
 from typing import Callable
 
 # --- vocabulário: palavra inteira, sem diferenciar maiúsculas/minúsculas, preserva a capitalização
@@ -40,7 +41,26 @@ PT_PARA_BR = {k: v for k, v in PT_PARA_BR.items() if k != v}
 _ESTAR = r"(?:está|estão|estava|estavam|estou|estamos|estás|estive|estiveram|estarão|estará|estaria|estariam)"
 _IRREG = {"ver": "vendo", "ser": "sendo", "ter": "tendo", "ler": "lendo", "vir": "vindo", "pôr": "pondo",
           "ir": "indo", "dar": "dando", "crer": "crendo", "rir": "rindo", "pôr-se": "pondo-se"}
-_GERUND = re.compile(rf"\b({_ESTAR})\s+a\s+([a-záàâãéêíóôõúç]+?)(ar|er|ir)\b", re.I)
+# Uma terminação ar/er/ir não identifica um verbo: "está a mulher" também
+# satisfaria essa regra. Converta somente infinitivos conhecidos; palavras
+# ambíguas, como "colher" (objeto ou verbo), ficam deliberadamente de fora.
+_GERUNDS = {
+    inf: inf[:-2] + {"ar": "ando", "er": "endo", "ir": "indo"}[inf[-2:]]
+    for inf in (
+        "abandonar aceitar acompanhar acontecer ajudar andar anunciar aparecer aprender "
+        "atacar avançar beber caminhar cantar capturar cavalgar chegar combater comer "
+        "comprar construir continuar conversar correr defender descansar descobrir dizer "
+        "dormir entrar entregar escrever escutar esperar estudar falar fazer fugir ganhar "
+        "guardar lutar marchar morrer mover negociar obedecer ouvir pagar partir passar "
+        "pedir pensar perder perseguir poder procurar proteger querer regressar resistir "
+        "responder saber sair seguir sentir trabalhar trazer treinar usar vender vigiar voltar"
+    ).split()
+}
+_GERUNDS.update(_IRREG)
+_GERUND = re.compile(
+    rf"\b({_ESTAR})\s+a\s+(" + "|".join(re.escape(inf) for inf in sorted(_GERUNDS, key=len, reverse=True)) + r")\b",
+    re.I,
+)
 # verbo (3ª pessoa do plural / pretérito perfeito) + pronome, só no MEIO da frase (no início o jeito de Portugal também é correto no Brasil): "impressionam-me" -> "me impressionam"
 _ENCLIT = re.compile(r"\b([A-Za-zÀ-ÿ]+(?:am|ou|aram|eram|iram|eu|iu|ão))-(me|te|nos|lhe|lhes)\b")
 
@@ -56,21 +76,16 @@ def _case_like(found: str, repl: str) -> str:
 def _word_map(pairs: dict[str, str]) -> Callable[[str], str]:
     if not pairs:
         return lambda s: s
+    if any(not original.strip() for original in pairs):
+        raise ValueError("a substituição precisa ter um termo original não vazio")
     low = {k.lower(): v for k, v in pairs.items()}
     rx = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in sorted(low, key=len, reverse=True)) + r")(?!\w)", re.I)
     return lambda s: rx.sub(lambda m: _case_like(m.group(0), low[m.group(0).lower()]), s)
 
 
 def _gerund(m: re.Match) -> str:
-    estar, stem, end = m.group(1), m.group(2), m.group(3)
-    inf = stem + end
-    if inf.lower() in _IRREG:
-        g = _IRREG[inf.lower()]
-    elif len(stem) < 2:
-        return m.group(0)                                # "está a mar/lar/par": é substantivo, não verbo
-    else:
-        g = stem + {"ar": "ando", "er": "endo", "ir": "indo"}[end.lower()]
-    return f"{estar} {_case_like(inf, g) if inf[:1].isupper() else g}"
+    estar, inf = m.group(1), m.group(2)
+    return f"{estar} {_case_like(inf, _GERUNDS[inf.lower()])}"
 
 
 def ptbr(text: str) -> str:
@@ -112,14 +127,18 @@ def load_replacements(path) -> dict[str, str]:
     repl: dict[str, str] = {}
     if not path or not path.exists():
         return repl
-    for line in path.read_text(encoding="utf-8-sig").splitlines():
-        if not line.strip() or line.startswith("#"):
+    for number, line in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+        if not line.strip() or line.lstrip().startswith("#"):
             continue
         if "\t" in line:
             a, b = line.split("\t", 1)
         elif "=" in line:
             a, b = line.split("=", 1)
         else:
+            print(f"Aviso: {path}:{number}: use TAB ou '=' para separar original e substituição.", file=sys.stderr)
+            continue
+        if not a.strip():
+            print(f"Aviso: {path}:{number}: termo original vazio ignorado.", file=sys.stderr)
             continue
         repl[a.strip()] = b.strip()
     return repl

@@ -1,172 +1,1456 @@
-# glossario.tsv - Termos com tradução padronizada para Mount & Blade: Warband / Perisno
-# Formato: original<TAB>tradução
-The Exploration Guild	A Guilda de Exploração
-The Freelancer Guild	A Guilda dos Freelancers
-The Merchant's Guild	A Guilda dos Mercadores
-Kingdom of Tolrania Reino de Tolrania
-Kingdom of Perisno  Reino de Perisno
-Order of the Eagle  Ordem da Águia
-The Red Immortals	Os Imortais Vermelhos
-Surrender or die	Renda-se ou morra
-surrender or die	renda-se ou morra
-Confederation of	Confederação de
-mountain bandits	bandidos da montanha
-Venetoran Empire	Império Venetorano
-High Inquisition	Alta Inquisição
-The Third Legion	A Terceira Legião
-Principality of Principado de
-Church of Faith Igreja da Fé
-oath of homage	juramento de vassalagem
-forest bandits	bandidos da floresta
-desert bandits	bandidos do deserto
-Peasant Rebels	Rebeldes Camponeses
-Robber Knights	Cavaleiros Salteadores
-Forest Bandits	Bandidos da Floresta
-baggage train	trem de bagagem
-Right to Rule	Direito de Governar
-right to rule	direito de governar
-village elder	ancião da aldeia
-Village Elder	Ancião da Aldeia
-ransom broker	corretor de resgates
-Ransom Broker	Corretor de Resgates
-tavern keeper	estalajadeiro
-Tavern Keeper	Estalajadeiro
-quartermaster	intendente
-Hakkon Empire	Império Hakkon
-Border Patrol	Patrulha de Fronteira
-Blood Shamans	Xamãs de Sangue
-guild master	mestre da guilda
-Guild Master	Mestre da Guilda
-siege ladder	escada de cerco
-Zann Dynasty	Dinastia Zann
-Wolf Knights	Cavaleiros do Lobo
-Wild Animals	Animais Selvagens
-tournaments	torneios
-controversy	controvérsia
-chamberlain	camareiro
-sea raiders	invasores marítimos
-siege tower	torre de cerco
-your party	seu grupo
-Your party	Seu grupo
-tournament	torneio
-chancellor	chanceler
-Kingdom of	Reino de
-manhunters	caçadores de fugitivos
-Jin Empire	Império Jin
-Foreigners	Estrangeiros
-the party	o grupo
-The party	O grupo
-surrender	rendição
-Surrender	Rendição
-innkeeper	estalajadeiro
-constable	condestável
-Empire of	Império de
-manhunter	caçador de fugitivos
-deserters	desertores
-garrisons	guarnições
-prisoners	prisioneiros
-Deserters	Desertores
+# Phantasy Calradia / Mount & Blade: Warband — português brasileiro
+# Formato: original<TAB>tradução. UTF-8. Linhas iniciadas por # são comentários.
+# Fontes: os textos locais em languages/en; termos nativos úteis também incluídos.
+# As traduções são escolhas editoriais de PT-BR, não uma localização oficial.
+# O motor diferencia maiúsculas e minúsculas e prioriza expressões mais longas.
+# Variantes de capitalização encontradas na origem são incluídas em cada seção.
+# Evite verbos/palavras ambíguos isolados: fight, fire, order, male, female, staff.
+# Nomes próprios ficam em nomes.txt; títulos, facções e locais descritivos aqui.
+
+# 01 — Facções do jogo base e de Phantasy Calradia
+Kingdom of Swadia	Reino de Swadia
+Kingdom of Vaegirs	Reino dos Vaegirs
+Khergit Khanate	Canato Khergit
+Kingdom of Nords	Reino dos Nórdicos
+Kingdom of Rhodoks	Reino dos Rhodoks
+Sarranid Sultanate	Sultanato Sarranida
+Dokohan Koldoff Alliance	Aliança Dokohan Koldoff
+Norkrak Realm	Reino de Norkrak
+House of Ken Urden	Casa de Ken Urden
+Bleeding Throat Clan	Clã da Garganta Sangrenta
+Ridas Magocracy	Magocracia de Ridas
+Delthersam Empire	Império de Delthersam
+Order of the Blazing Hand	Ordem da Mão Flamejante
+Blazing Hand	Mão Flamejante
+No Faction	Sem Facção
+no faction	sem facção
+Player Faction	Facção do Jogador
+player faction	facção do jogador
+Player's Supporters	Apoiadores do Jogador
+Player Haters	Inimigos do Jogador
+Commoners	Plebeus
+commoners	plebeus
+Outlaws	Foras da Lei
+outlaws	foras da lei
 Innocents	Inocentes
 Merchants	Mercadores
-Commoners	Plebeus
+merchants	mercadores
+Manhunters	Caçadores de Bandidos
+manhunters	caçadores de bandidos
+Deserters	Desertores
+deserters	desertores
+Mountain Bandits	Bandidos da Montanha
+mountain bandits	bandidos da montanha
+Forest Bandits	Bandidos da Floresta
+forest bandits	bandidos da floresta
+Desert Bandits	Bandidos do Deserto
+desert bandits	bandidos do deserto
+Steppe Bandits	Bandidos da Estepe
+steppe bandits	bandidos da estepe
+Taiga Bandits	Bandidos da Taiga
+Sea Raiders	Saqueadores do Mar
+sea raiders	saqueadores do mar
+Looters	Saqueadores
+looters	saqueadores
+Swadian	Swadiano
+Swadians	Swadianos
+swadians	swadianos
+Nord	Nórdico
+Nords	Nórdicos
+nords	nórdicos
+Sarranid	Sarranida
+Sarranids	Sarranidas
+sarranids	sarranidas
+Immortals	Imortais
+immortals	imortais
+Demons	Demônios
+demons	demônios
+
+# 02 — Locais descritivos; nomes de cidades e raízes dos castelos são preservados
+Elf Forest	Floresta Élfica
+Elf forest	Floresta élfica
+Tharuk's Gate	Portão de Tharuk
+Shin'szaluk's Ladder	Escadaria de Shin'szaluk
+Bloody Cliff	Penhasco Sangrento
+Wizard Tower	Torre do Mago
+The Obsidian Spire	A Agulha de Obsidiana
+The obsidian spire	A agulha de obsidiana
+Obsidian Spire	Agulha de Obsidiana
+obsidian spire	agulha de obsidiana
+Blazing Hand Temple	Templo da Mão Flamejante
+Keep of Thorns	Fortaleza dos Espinhos
+Dhorak Keep	Fortaleza de Dhorak
+Four Ways Inn	Estalagem das Quatro Estradas
+four ways inn	estalagem das quatro estradas
+Salt Mine	Mina de Sal
+salt mine	mina de sal
+Training Ground	Campo de Treinamento
+training ground	campo de treinamento
+Training Field	Campo de Treinamento
+training field	campo de treinamento
+Lich Lair	Covil do Lich
+Underdark	Subterrâneo
+Castle	Castelo
+castle	castelo
+Fortress	Fortaleza
+fortress	fortaleza
+
+# Nomes completos dos castelos para manter a ordem natural em português.
+Culmarr Castle	Castelo de Culmarr
+Malayurg Castle	Castelo de Malayurg
+Bulugha Castle	Castelo de Bulugha
+Radoghir Castle	Castelo de Radoghir
+Tehlrog Castle	Castelo de Tehlrog
+Tilbaut Castle	Castelo de Tilbaut
+Sungetche Castle	Castelo de Sungetche
+Jeirbe Castle	Castelo de Jeirbe
+Jamiche Castle	Castelo de Jamiche
+Alburq Castle	Castelo de Alburq
+Curin Castle	Castelo de Curin
+Chalbek Castle	Castelo de Chalbek
+Kelredan Castle	Castelo de Kelredan
+Maras Castle	Castelo de Maras
+Ergellon Castle	Castelo de Ergellon
+Almerra Castle	Castelo de Almerra
+Distar Castle	Castelo de Distar
+Ismirala Castle	Castelo de Ismirala
+Yruma Castle	Castelo de Yruma
+Derchios Castle	Castelo de Derchios
+Ibdeles Castle	Castelo de Ibdeles
+Unuzdaq Castle	Castelo de Unuzdaq
+Tevarin Castle	Castelo de Tevarin
+Reindi Castle	Castelo de Reindi
+Ryibelet Castle	Castelo de Ryibelet
+Senuzgda Castle	Castelo de Senuzgda
+Rindyar Castle	Castelo de Rindyar
+Grunwalder Castle	Castelo de Grunwalder
+Nelag Castle	Castelo de Nelag
+Asugan Castle	Castelo de Asugan
+Vyincourd Castle	Castelo de Vyincourd
+Knudarr Castle	Castelo de Knudarr
+Etrosq Castle	Castelo de Etrosq
+Hrus Castle	Castelo de Hrus
+Haringoth Castle	Castelo de Haringoth
+Jelbegi Castle	Castelo de Jelbegi
+Dramug Castle	Castelo de Dramug
+Tulbuk Castle	Castelo de Tulbuk
+Slezkh Castle	Castelo de Slezkh
+Uhhun Castle	Castelo de Uhhun
+Jameyyed Castle	Castelo de Jameyyed
+Teramma Castle	Castelo de Teramma
+Sharwa Castle	Castelo de Sharwa
+Durrin Castle	Castelo de Durrin
+Caraf Castle	Castelo de Caraf
+Weyyah Castle	Castelo de Weyyah
+Samarra Castle	Castelo de Samarra
+Bardaq Castle	Castelo de Bardaq
+Huor Tinuviel Castle	Castelo de Huor Tinuviel
+Daeron Palantir Castle	Castelo de Daeron Palantir
+Vardamir Castle	Castelo de Vardamir
+Valhasnosnar Castle	Castelo de Valhasnosnar
+Krahl Castle	Castelo de Krahl
+Tacram Castle	Castelo de Tacram
+Nhab Castle	Castelo de Nhab
+Gkid Castle	Castelo de Gkid
+Do'duis Castle	Castelo de Do'duis
+Barriervs Castle	Castelo de Barriervs
+Everhval Castle	Castelo de Everhval
+Auvryrahel Castle	Castelo de Auvryrahel
+Silversage Castle	Castelo de Silversage
+Fallwynne Castle	Castelo de Fallwynne
+Highgriffin Castle	Castelo de Highgriffin
+Wolfmead Castle	Castelo de Wolfmead
+Ashfield Castle	Castelo de Ashfield
+Shadowhurst Castle	Castelo de Shadowhurst
+Barrowhaven Castle	Castelo de Barrowhaven
+Normarsh Castle	Castelo de Normarsh
+Linacre Castle	Castelo de Linacre
+Mapleedge Castle	Castelo de Mapleedge
+Easthill Castle	Castelo de Easthill
+Ironston Castle	Castelo de Ironston
+Sylharius Castle	Castelo de Sylharius
+Genbadir Castle	Castelo de Genbadir
+Enyvanora Castle	Castelo de Enyvanora
+Zhulormo Castle	Castelo de Zhulormo
+Tysahcae Castle	Castelo de Tysahcae
+Stisthla Fortress	Fortaleza de Stisthla
+Marguth Fortress	Fortaleza de Marguth
+Dungrim Fortress	Fortaleza de Dungrim
+Phiewaru Fortress	Fortaleza de Phiewaru
+
+# 03 — Todas as habilidades ativas em skills.csv, incluindo as do mod
+Trade	Comércio
+trade	comércio
+Leadership	Liderança
+leadership	liderança
+Prisoner Management	Gestão de Prisioneiros
+Entertainment	Atuação
+Faith	Fé
+faith	fé
+Persuasion	Persuasão
+persuasion	persuasão
+Engineer	Engenharia
+engineer	engenharia
+Engineering	Engenharia
+engineering	engenharia
+First Aid	Primeiros Socorros
+Surgery	Cirurgia
+surgery	cirurgia
+Wound Treatment	Tratamento de Feridas
+Inventory Management	Gestão de Inventário
+inventory management	gestão de inventário
+Spotting	Observação
+spotting	observação
+Path-finding	Orientação
+Pathfinding	Orientação
+Tactics	Tática
+tactics	tática
+Tracking	Rastreamento
+Trainer	Treinamento
+trainer	treinamento
+Magic Power	Poder Mágico
+magic power	poder mágico
+Magic Defense	Defesa Mágica
+magic defense	defesa mágica
+Magic Def	Defesa Mágica
+Necromancy	Necromancia
+necromancy	necromancia
+Creativity	Criatividade
+Looting	Saque
+looting	saque
+Horse Archery	Arquearia Montada
+Riding	Equitação
+riding	equitação
+Athletics	Atletismo
+Shield	Escudo
+shield	escudo
+SHIELD	ESCUDO
+Weapon Master	Maestria em Armas
+weapon master	maestria em armas
+Stealth	Furtividade
+stealth	furtividade
+Unarmed Combat	Combate Desarmado
+Power Draw	Puxada Potente
+power-draw	puxada potente
+Power Throw	Arremesso Potente
+Power Strike	Golpe Potente
+power strike	golpe potente
+Ironflesh	Vigor de Ferro
+Reserved Skill	Habilidade Reservada
+reserved skill	habilidade reservada
+Party skill	Habilidade de grupo
+Leader skill	Habilidade de líder
+Personal skill	Habilidade pessoal
+Class Skills	Habilidades de Classe
+Skill Points	Pontos de Habilidade
+Skill Point	Ponto de Habilidade
+Attribute Points	Pontos de Atributo
+Attribute Point	Ponto de Atributo
+Strength	Força
+strength	força
+Agility	Agilidade
+agility	agilidade
+Intelligence	Inteligência
+intelligence	inteligência
+Charisma	Carisma
+Hit Points	Pontos de Vida
+hit points	pontos de vida
+hit-points	pontos de vida
+Health	Vida
+health	vida
+Experience Points	Pontos de Experiência
+
+# 04 — Proficiências em armas; maestria é a habilidade, proficiência é a especialização
+Weapon Proficiencies	Proficiências em Armas
+weapon proficiencies	proficiências em armas
+Weapon Proficiency	Proficiência em Armas
+Proficiency Points	Pontos de Proficiência
+Proficiency Point	Ponto de Proficiência
+proficiency limits	limites de proficiência
+1 Hand Wpns	Armas de Uma Mão
+2 Hand Wpns	Armas de Duas Mãos
+One-Handed Weapons	Armas de Uma Mão
+one-handed weapons	armas de uma mão
+Two-Handed Weapons	Armas de Duas Mãos
+two-handed weapons	armas de duas mãos
+One Handed Weapons	Armas de Uma Mão
+one handed weapons	armas de uma mão
+One handed weapons	Armas de uma mão
+Two Handed Weapons	Armas de Duas Mãos
+two handed weapons	armas de duas mãos
+Two handed weapons	Armas de duas mãos
+One Handed & Shield	Arma de Uma Mão e Escudo
+One Handed	Uma Mão
+one handed	uma mão
+One handed	Uma mão
+Two Handed	Duas Mãos
+two handed	duas mãos
+Two handed	Duas mãos
+One-Handed	Uma Mão
+one-handed	uma mão
+One-handed	Uma mão
+Two-Handed	Duas Mãos
+two-handed	duas mãos
+Two-handed	Duas mãos
+Polearms	Armas de Haste
+polearms	armas de haste
+Polearm	Arma de Haste
+polearm	arma de haste
+Archery	Arquearia
+archery	arquearia
+Crossbows	Bestas
+crossbows	bestas
+Throwing	Arremesso
+throwing	arremesso
+Firearms	Armas de Fogo
+firearms	armas de fogo
+
+# 05 — Ordens de batalha (imperativo plural); evite forçar charge/fire em narrativas
+Charge!	Ataquem!
+charge!	ataquem!
+Charge	Ataquem
+Charge All	Ataquem Todos
+Charge all	Ataquem todos
+Charge When Dead	Atacar Após a Morte do Comandante
+Charge On Death	Atacar Após a Morte do Comandante
+Charge after KO	Atacar Após a Queda do Comandante
+Hold This Position	Mantenham Esta Posição
+Hold Position	Mantenham a Posição
+Stand Ground	Defendam a Posição
+Follow Me	Sigam-me
+Follow me	Sigam-me
+Stand Closer	Aproximem-se
+Spread Out	Espalhem-se
+Advance	Avancem
+Fall Back	Recuem
+Retreat!	Retirem-se!
+Fire At Will	Atirem à Vontade
+Fire at Will	Atirem à Vontade
+Hold Your Fire	Cessem Fogo
+Hold Fire	Cessem Fogo
+Mount	Montem
+Dismount	Desmontem
+Use Blunt Weapons	Usem Armas Contundentes
+Use Any Weapon	Usem Qualquer Arma
+Use Any Weapons	Usem Quaisquer Armas
+Use Shields	Usem Escudos
+No Shields	Sem Escudos
+Shields at Will	Escudos à Vontade
+shields at will	escudos à vontade
+Blunt / Hold Fire	Contundentes / Cessar Fogo
+Everyone	Todos
+Infantry	Infantaria
+Archers	Arqueiros
+Cavalry	Cavalaria
+Mounted Archers	Arqueiros Montados
+Horse Archers	Arqueiros Montados
+
+# 06 — Formações e ordens adicionais do mod / PBOD
+Pre-Battle Planning	Planejamento Pré-Batalha
+Pre-Battle Orders	Ordens Pré-Batalha
+Pre-Battle Deployment	Posicionamento Pré-Batalha
+Formation type orders	Ordens de Formação
+weapon orders	ordens de armamento
+Weapon orders	Ordens de armamento
+positioning orders	ordens de posicionamento
+Formations Options	Opções de Formação
+Formations Battle AI	IA de Batalha com Formações
+Formations AI	IA de Formações
+formations AI	Ia de formações
+No Formation	Sem Formação
+Shieldwall	Parede de Escudos
+shieldwall	parede de escudos
+Shield Wall	Parede de Escudos
+shield wall	parede de escudos
+Battle Square	Formação em Quadrado
+battle square	formação em quadrado
+Wedge	Cunha
+wedge	cunha
+Ranks	Fileiras
+ranks	fileiras
+Skirmish	Escaramuça
+skirmish	escaramuça
+Brace Polearms	Firmem as Armas de Haste
+brace for charge	firmem as armas contra a carga
+remove brace and fight	deixem de firmar as armas e lutem
+ready two-handers	preparem as armas de duas mãos
+ready polearms	preparem as armas de haste
+stand and fight	mantenham a posição e lutem
+One Handers	Armas de Uma Mão
+Two Handers	Armas de Duas Mãos
+Blunt Weapons	Armas Contundentes
+Blunt weapons	Armas contundentes
+Ranged Weapons	Armas de Longo Alcance
+ranged weapons	armas de longo alcance
+Ranged weapons	Armas de longo alcance
+Melee Weapons	Armas Corpo a Corpo
+melee weapons	armas corpo a corpo
+ranged friendly fire	fogo amigo à distância
+melee friendly fire	dano corpo a corpo em aliados
+friendly fire	fogo amigo
+Friendly fire	Fogo amigo
+cavalry charge	carga de cavalaria
+reinforcements	reforços
+Reinforcements	Reforços
+bodyguards	guarda-costas
+Bodyguards	Guarda-costas
+formations	formações
+Formations	Formações
+formation	formação
+Formation	Formação
+
+# 07 — Classes, raças e criaturas (termos de fantasia)
+Barbarian	Bárbaro
+barbarian	bárbaro
+Paladin	Paladino
+paladin	paladino
+PALADIN	PALADINO
+Bard	Bardo
+bard	bardo
+Fighter	Guerreiro
+fighter	guerreiro
+Ranger	Patrulheiro
+ranger	patrulheiro
+RANGER	PATRULHEIRO
+Rogue	Ladino
+rogue	ladino
+Cleric	Clérigo
+cleric	clérigo
+CLERIC	CLÉRIGO
+Mage	Mago
+mage	mago
+MAGE	MAGO
+Necromancer	Necromante
+necromancer	necromante
+NECROMANCER	NECROMANTE
+Monk	Monge
+monk	monge
+MONK	MONGE
+Archmage	Arquimago
+Wizard	Mago
+wizard	mago
+Sorceress	Feiticeira
+Enchantress	Encantadora
+Priestess	Sacerdotisa
+High Priestess	Alta Sacerdotisa
+High Priest	Sumo Sacerdote
+High Cleric	Alto Clérigo
+Shamaness	Xamã
+Shaman	Xamã
+Spellsword	Espadachim Arcano
+Blademaster	Mestre das Lâminas
+Shadowblade	Lâmina das Sombras
+Human	Humano
+human	humano
+Humans	Humanos
+humans	humanos
+Elf	Elfo
+elf	elfo
+Elves	Elfos
+elves	elfos
+Elven	Élfico
+elven	élfico
+Elvish	Élfico
+Dark Elf	Elfo Sombrio
+dark elf	elfo sombrio
+Dark Elves	Elfos Sombrios
+Dwarf	Anão
+dwarf	anão
+Dwarves	Anões
+dwarves	anões
+Dwarven	Anão
+dwarven	anão
+Drow	Drow
+drow	drow
+Orc	Orc
+orc	orc
+Orcs	Orcs
+orcs	orcs
+Orcish	Orc
+Undead	Mortos-vivos
+undead	mortos-vivos
+Golem	Golem
+golem	golem
+Golems	Golems
+golems	golems
+Clay Golem	Golem de Argila
+clay golem	golem de argila
+Stone Golem	Golem de Pedra
+Iron Golem	Golem de Ferro
+iron golem	golem de ferro
+Silver Golem	Golem de Prata
+Skeleton	Esqueleto
+skeleton	esqueleto
+Skeletons	Esqueletos
+skeletons	esqueletos
+Zombie	Zumbi
+zombie	zumbi
+Zombies	Zumbis
+zombies	zumbis
+Mummy	Múmia
+Mummies	Múmias
+mummies	múmias
+Lich	Lich
+lich	lich
+Liches	Liches
+Demon	Demônio
+demon	demônio
+Shadow	Sombra
+shadow	sombra
+Shadows	Sombras
+shadows	sombras
+
+# 08 — Tropas compostas: traduzir a expressão evita ordem e gênero incorretos
+Lesser Mercenary Mage	Mago Mercenário Menor
+Mercenary Mage	Mago Mercenário
+Veteran Mercenary Mage	Mago Mercenário Veterano
+Greater Mercenary Mage	Mago Mercenário Maior
+Novice Mage	Mago Noviço
+Apprentice Mage	Mago Aprendiz
+Journeyman Mage	Mago Praticante
+Adept Mage	Mago Adepto
+Expert Mage	Mago Especialista
+Master Mage	Mestre Mago
+Dark Mage	Mago das Trevas
+Master Necromancer	Mestre Necromante
+Lesser Lich	Lich Menor
+Elf Man	Elfo
+Elf Woman	Elfa
+Drow Man	Drow Masculino
+Drow Woman	Drow Feminina
+Drow Female Fighter	Guerreira Drow
+Drow Fighter	Guerreiro Drow
+Drow Veteran Fighter	Guerreiro Drow Veterano
+Drow Scout	Batedor Drow
+Drow Recruit	Recruta Drow
+Drow Acolyte	Acólito Drow
+Drow Initiate	Iniciado Drow
+Drow Handmaiden	Serva Drow
+Drow Mage	Mago Drow
+Drow Master Mage	Mestre Mago Drow
+Drow Guard	Guarda Drow
+Drow Assassin	Assassino Drow
+Drow Priestess	Sacerdotisa Drow
+Drow High Priestess	Alta Sacerdotisa Drow
+Drow Tower Wizard	Mago da Torre Drow
+Drow Blademaster	Mestre das Lâminas Drow
+Drow Shadowblade	Lâmina das Sombras Drow
+Drow Spider Rider	Cavaleiro de Aranha Drow
+Drow Spider Knight	Cavaleiro da Aranha Drow
+Lolth's Chosen	Escolhido de Lolth
+Elven Forester	Mateiro Élfico
+Elven Freebow	Arqueiro Livre Élfico
+Elven Hunter	Caçador Élfico
+Elven Huntress	Caçadora Élfica
+Elven Archer	Arqueiro Élfico
+Elven Fighter	Guerreiro Élfico
+Elven Scout	Batedor Élfico
+Elven Forest Runner	Corredor da Floresta Élfico
+Elven Ranger	Patrulheiro Élfico
+elven ranger	patrulheiro élfico
+Elven Spellsword	Espadachim Arcano Élfico
+Elven Guardian	Guardião Élfico
+Elven Bowsister	Irmã do Arco Élfica
+Elven Ambusher	Emboscador Élfico
+Elven Hawkeye	Olho de Falcão Élfico
+Elven Knight	Cavaleiro Élfico
+Elven Stalker	Espreitador Élfico
+Elven Initiate	Iniciado Élfico
+Elven Enchantress	Encantadora Élfica
+Elven Sorceress	Feiticeira Élfica
+Elven Arcane Master	Mestre Arcano Élfico
+Elven Freebows	Arqueiros Livres Élficos
+Elven Bowsisters	Irmãs do Arco Élficas
+Elven Spellswords	Espadachins Arcanos Élficos
+Elven Sorceresses	Feiticeiras Élficas
+Drow Outcast	Exilado Drow
+Drow Renegade	Renegado Drow
+Foot Dwarf	Anão de Infantaria
+Dwarven Fighter	Guerreiro Anão
+Dwarf Champion	Campeão Anão
+Dwarf Paragon	Paragão Anão
+Dwarven Skirmisher	Escaramuçador Anão
+Crossbow Dwarf	Besteiro Anão
+Arquebus Dwarf	Arcabuzeiro Anão
+Dwarven Marksman	Atirador de Elite Anão
+Arquebus Master Dwarf	Mestre Arcabuzeiro Anão
+Orcish Looter	Saqueador Orc
+Orcish Warrior	Guerreiro Orc
+Orcish Raider	Incursor Orc
+Orcish Rider	Cavaleiro Orc
+Orcish Ravager	Devastador Orc
+Orcish Pouncer	Assaltante Orc
+Orcish Bear Warrior	Guerreiro Urso Orc
+Orcish Juggernaut	Colosso Orc
+Orc Slave	Escravo Orc
+Orc Thrall	Servo Orc
+Orc Thrall Soldier	Soldado Servo Orc
+Orcish Hunter	Caçador Orc
+Orcish Archer	Arqueiro Orc
+Orcish Deathshot	Atirador Mortal Orc
+Orcish Raider Shamaness	Xamã Incursora Orc
+Zombie Warrior	Guerreiro Zumbi
+Heavy Zombie Warrior	Guerreiro Zumbi Pesado
+Skeleton Warrior	Guerreiro Esqueleto
+Heavy Skeleton Warrior	Guerreiro Esqueleto Pesado
+Skeleton Archer	Arqueiro Esqueleto
+Skeleton Infantry	Infantaria de Esqueletos
+skeleton infantry	infantaria de esqueletos
+Skeleton Cavalry	Cavalaria de Esqueletos
+skeleton cavalry	cavalaria de esqueletos
+Skeleton Knight	Cavaleiro Esqueleto
+Zombie Knight	Cavaleiro Zumbi
+Blazing Hand Footman	Soldado de Infantaria da Mão Flamejante
+Blazing Hand Cleric	Clérigo da Mão Flamejante
+Blazing Hand Crusader	Cruzado da Mão Flamejante
+Blazing Hand Inquisitor	Inquisidor da Mão Flamejante
+Blazing Hand Vanquisher	Conquistador da Mão Flamejante
+Blazing Hand Squire	Escudeiro da Mão Flamejante
+Good Clerics	Clérigos do Bem
+Neutral Clerics	Clérigos Neutros
+Evil Clerics	Clérigos do Mal
+
+Elven Foresters	Mateiros Élficos
+Elven Hunters	Caçadores Élficos
+Elven Huntresses	Caçadoras Élficas
+Elven Archers	Arqueiros Élficos
+Elven Fighters	Guerreiros Élficos
+Elven Scouts	Batedores Élficos
+Elven Forest Runners	Corredores da Floresta Élficos
+Elven Rangers	Patrulheiros Élficos
+Elven Guardians	Guardiões Élficos
+Elven Ambushers	Emboscadores Élficos
+Elven Hawkeyes	Olhos de Falcão Élficos
+Elven Knights	Cavaleiros Élficos
+Elven Stalkers	Espreitadores Élficos
+Elven Initiates	Iniciados Élficos
+Elven Enchantresses	Encantadoras Élficas
+Elven Arcane Masters	Mestres Arcanos Élficos
+Drow Outcasts	Exilados Drow
+Drow Renegades	Renegados Drow
+Drow Men	Drow Masculinos
+Drow Women	Drow Femininas
+Drow Recruits	Recrutas Drow
+Drow Acolytes	Acólitos Drow
+Drow Initiates	Iniciados Drow
+Drow Female Fighters	Guerreiras Drow
+Drow Fighters	Guerreiros Drow
+Drow Veteran Fighters	Guerreiros Drow Veteranos
+Drow Scouts	Batedores Drow
+Drow Handmaidens	Servas Drow
+Drow Guards	Guardas Drow
+Drow Assassins	Assassinos Drow
+Drow Priestesses	Sacerdotisas Drow
+Drow Tower Wizards	Magos da Torre Drow
+Drow Blademasters	Mestres das Lâminas Drow
+Drow Shadowblades	Lâminas das Sombras Drow
+Drow Master Mages	Mestres Magos Drow
+Drow Spider Riders	Cavaleiros de Aranha Drow
+Foot Dwarves	Anões de Infantaria
+Dwarven Fighters	Guerreiros Anões
+Dwarf Champions	Campeões Anões
+Dwarven Skirmishers	Escaramuçadores Anões
+Crossbow Dwarves	Besteiros Anões
+Arquebus Dwarves	Arcabuzeiros Anões
+Dwarven Marksmen	Atiradores de Elite Anões
+Arquebus Master Dwarves	Mestres Arcabuzeiros Anões
+Orcish Looters	Saqueadores Orcs
+Orcish Warriors	Guerreiros Orcs
+Orcish Raiders	Incursores Orcs
+Orcish Riders	Cavaleiros Orcs
+Orcish Ravagers	Devastadores Orcs
+Orcish Pouncers	Assaltantes Orcs
+Orcish Bear Warriors	Guerreiros Urso Orcs
+Orcish Juggernauts	Colossos Orcs
+Orc Slaves	Escravos Orcs
+Orc slaves	Escravos orcs
+Orc Thralls	Servos Orcs
+Orc Thrall Soldiers	Soldados Servos Orcs
+Orcish Hunters	Caçadores Orcs
+Orcish Archers	Arqueiros Orcs
+Orcish Raider Shamanesses	Xamãs Incursoras Orcs
+Novice Mages	Magos Noviços
+Apprentice Mages	Magos Aprendizes
+Journeyman Mages	Magos Praticantes
+journeyman Mages	Magos praticantes
+Adept Mages	Magos Adeptos
+Expert Mages	Magos Especialistas
+Master Mages	Mestres Magos
+Mercenary Mages	Magos Mercenários
+Veteran Mercenary Mages	Magos Mercenários Veteranos
+Dark Mages	Magos das Trevas
+dark mages	magos das trevas
+Master Necromancers	Mestres Necromantes
+Lesser Liches	Liches Menores
+Blazing Hand Clerics	Clérigos da Mão Flamejante
+Blazing Hand Crusaders	Cruzados da Mão Flamejante
+Blazing Hand Inquisitors	Inquisidores da Mão Flamejante
+Blazing Hand Vanquishers	Conquistadores da Mão Flamejante
+Blazing Hand Squires	Escudeiros da Mão Flamejante
+Blazing Hand Cavalry	Cavalaria da Mão Flamejante
+Blazing Hand Knight	Cavaleiro da Mão Flamejante
+Blazing Hand Knights	Cavaleiros da Mão Flamejante
+Female Novice	Noviça
+Female Novices	Noviças
+Nun	Freira
+Nuns	Freiras
+nuns	freiras
+Novice of Corellon	Noviço de Corellon
+Novices of Corellon	Noviços de Corellon
+Acolyte of Corellon	Acólito de Corellon
+Cleric of Corellon	Clérigo de Corellon
+High Cleric of Corellon	Alto Clérigo de Corellon
+Novice of Moradin	Noviço de Moradin
+Novices of Moradin	Noviços de Moradin
+Cleric of Moradin	Clérigo de Moradin
+Clerics of Moradin	Clérigos de Moradin
+High Priest of Moradin	Sumo Sacerdote de Moradin
+High Priests of Moradin	Sumos Sacerdotes de Moradin
+Novice of Lathander	Noviço de Lathander
+Cleric of Lathander	Clérigo de Lathander
+High Cleric of Lathander	Alto Clérigo de Lathander
+Novice of Kossuth	Noviço de Kossuth
+Cleric of Kossuth	Clérigo de Kossuth
+High Cleric of Kossuth	Alto Clérigo de Kossuth
+Novice of Tempus	Noviço de Tempus
+Cleric of Tempus	Clérigo de Tempus
+High Cleric of Tempus	Alto Clérigo de Tempus
+Novice of Gruumsh	Noviço de Gruumsh
+Cleric of Gruumsh	Clérigo de Gruumsh
+High Cleric of Gruumsh	Alto Clérigo de Gruumsh
+
+# Tropas nativas presentes no mod: nomes completos, singular e plural.
+Khergit Deserter	Desertor Khergit
+Khergit Deserters	Desertores Khergits
+Khergit Dismounted Lancer	Lanceiro Desmontado Khergit
+Khergit Elite Horse Archer	Arqueiro Montado de Elite Khergit
+Khergit Elite Horse Archers	Arqueiros Montados de Elite Khergits
+Khergit Elite Lancer	Lanceiro de Elite Khergit
+Khergit Elite Lancers	Lanceiros de Elite Khergits
+Khergit Horse Archer	Arqueiro Montado Khergit
+Khergit Horse Archers	Arqueiros Montados Khergits
+Khergit Horseman	Cavaleiro Khergit
+Khergit Horsemen	Cavaleiros Khergits
+Khergit Infantries	Soldados de Infantaria Khergits
+Khergit Infantry	Infantaria Khergit
+Khergit Lancer	Lanceiro Khergit
+Khergit Lancers	Lanceiros Khergits
+Khergit Messenger	Mensageiro Khergit
+Khergit Messengers	Mensageiros Khergits
+Khergit Shaman	Xamã Khergit
+Khergit Shamans	Xamãs Khergits
+Khergit Skirmisher	Escaramuçador Khergit
+Khergit Skirmishers	Escaramuçadores Khergits
+Khergit Tribesman	Guerreiro Tribal Khergit
+Khergit Tribesmen	Guerreiros Tribais Khergits
+Khergit Veteran Horse Archer	Arqueiro Montado Veterano Khergit
+Khergit Veteran Horse Archers	Arqueiros Montados Veteranos Khergits
+Nord Archer	Arqueiro Nórdico
+Nord Archers	Arqueiros Nórdicos
+Nord Deserter	Desertor Nórdico
+Nord Deserters	Desertores Nórdicos
+Nord Elite Archer	Arqueiro de Elite Nórdico
+Nord Elite Archers	Arqueiros de Elite Nórdicos
+Nord Footman	Soldado de Infantaria Nórdico
+Nord Footmen	Soldados de Infantaria Nórdicos
+Nord Huntsman	Caçador Nórdico
+Nord Huntsmen	Caçadores Nórdicos
+Nord Huscarl	Huscarl Nórdico
+Nord Huscarls	Huscarls Nórdicos
+Nord Messenger	Mensageiro Nórdico
+Nord Messengers	Mensageiros Nórdicos
+Nord Recruit	Recruta Nórdico
+Nord Recruits	Recrutas Nórdicos
+Nord Scout	Batedor Nórdico
+Nord Scouts	Batedores Nórdicos
+Nord Shaman	Xamã Nórdico
+Nord Shamans	Xamãs Nórdicos
+Nord Trained Footman	Soldado de Infantaria Treinado Nórdico
+Nord Trained Footmen	Soldados de Infantaria Treinados Nórdicos
+Nord Veteran	Veterano Nórdico
+Nord Veteran Archer	Arqueiro Veterano Nórdico
+Nord Veteran Archers	Arqueiros Veteranos Nórdicos
+Nord Veterans	Veteranos Nórdicos
+Nord Warrior	Guerreiro Nórdico
+Nord Warriors	Guerreiros Nórdicos
+Rhodok Crossbowman	Besteiro Rhodok
+Rhodok Crossbowmen	Besteiros Rhodoks
+Rhodok Deserter	Desertor Rhodok
+Rhodok Deserters	Desertores Rhodoks
+Rhodok Foot Knight	Cavaleiro a Pé Rhodok
+Rhodok Foot Knights	Cavaleiros a Pé Rhodoks
+Rhodok Horseman	Cavaleiro Rhodok
+Rhodok Horsemen	Cavaleiros Rhodoks
+Rhodok Messenger	Mensageiro Rhodok
+Rhodok Messengers	Mensageiros Rhodoks
+Rhodok Priest	Sacerdote Rhodok
+Rhodok Priests	Sacerdotes Rhodoks
+Rhodok Scout	Batedor Rhodok
+Rhodok Scouts	Batedores Rhodoks
+Rhodok Sergeant	Sargento Rhodok
+Rhodok Sergeants	Sargentos Rhodoks
+Rhodok Sharpshooter	Atirador de Precisão Rhodok
+Rhodok Sharpshooters	Atiradores de Precisão Rhodoks
+Rhodok Sniper	Atirador de Longo Alcance Rhodok
+Rhodok Snipers	Atiradores de Longo Alcance Rhodoks
+Rhodok Spearman	Lanceiro Rhodok
+Rhodok Spearmen	Lanceiros Rhodoks
+Rhodok Trained Crossbowman	Besteiro Treinado Rhodok
+Rhodok Trained Crossbowmen	Besteiros Treinados Rhodoks
+Rhodok Trained Spearman	Lanceiro Treinado Rhodok
+Rhodok Trained Spearmen	Lanceiros Treinados Rhodoks
+Rhodok Tribesman	Guerreiro Tribal Rhodok
+Rhodok Tribesmen	Guerreiros Tribais Rhodoks
+Rhodok Veteran Crossbowman	Besteiro Veterano Rhodok
+Rhodok Veteran Crossbowmen	Besteiros Veteranos Rhodoks
+Rhodok Veteran Spearman	Lanceiro Veterano Rhodok
+Rhodok Veteran Spearmen	Lanceiros Veteranos Rhodoks
+Sarranid Archer	Arqueiro Sarranida
+Sarranid Archers	Arqueiros Sarranidas
+Sarranid Deserter	Desertor Sarranida
+Sarranid Deserters	Desertores Sarranidas
+Sarranid Elite Archer	Arqueiro de Elite Sarranida
+Sarranid Elite Archers	Arqueiros de Elite Sarranidas
+Sarranid Elite Guard	Guarda de Elite Sarranida
+Sarranid Elite Guards	Guardas de Elite Sarranidas
+Sarranid Elite Mamluke	Mameluco de Elite Sarranida
+Sarranid Elite Mamlukes	Mamelucos de Elite Sarranidas
+Sarranid Footman	Soldado de Infantaria Sarranida
+Sarranid Footmen	Soldados de Infantaria Sarranidas
+Sarranid Guard	Guarda Sarranida
+Sarranid Guards	Guardas Sarranidas
+Sarranid Horseman	Cavaleiro Sarranida
+Sarranid Horsemen	Cavaleiros Sarranidas
+Sarranid Imam	Imã Sarranida
+Sarranid Imams	Imãs Sarranidas
+Sarranid Infantries	Soldados de Infantaria Sarranidas
+Sarranid Infantry	Infantaria Sarranida
+Sarranid Mamluke	Mameluco Sarranida
+Sarranid Mamlukes	Mamelucos Sarranidas
+Sarranid Master Archer	Mestre Arqueiro Sarranida
+Sarranid Master Archers	Mestres Arqueiros Sarranidas
+Sarranid Messenger	Mensageiro Sarranida
+Sarranid Messengers	Mensageiros Sarranidas
+Sarranid Recruit	Recruta Sarranida
+Sarranid Recruits	Recrutas Sarranidas
+Sarranid Skirmisher	Escaramuçador Sarranida
+Sarranid Skirmishers	Escaramuçadores Sarranidas
+Sarranid Veteran Footman	Soldado de Infantaria Veterano Sarranida
+Sarranid Veteran Footmen	Soldados de Infantaria Veteranos Sarranidas
+Sarranid footman	Soldado de Infantaria Sarranida
+Swadian Champion	Campeão Swadiano
+Swadian Champions	Campeões Swadianos
+Swadian Crossbowman	Besteiro Swadiano
+Swadian Crossbowmen	Besteiros Swadianos
+Swadian Deserter	Desertor Swadiano
+Swadian Deserters	Desertores Swadianos
+Swadian Footman	Soldado de Infantaria Swadiano
+Swadian Footmen	Soldados de Infantaria Swadianos
+Swadian Infantry	Infantaria Swadiana
+Swadian Knight	Cavaleiro Swadiano
+Swadian Knights	Cavaleiros Swadianos
+Swadian Lieutenant	Tenente Swadiano
+Swadian Lieutenants	Tenentes Swadianos
+Swadian Man at Arms	Homem de Armas Swadiano
+Swadian Men at Arms	Homens de Armas Swadianos
+Swadian Messenger	Mensageiro Swadiano
+Swadian Messengers	Mensageiros Swadianos
+Swadian Militia	Milícia Swadiana
+Swadian Pastor	Pastor Swadiano
+Swadian Pastors	Pastores Swadianos
+Swadian Recruit	Recruta Swadiano
+Swadian Recruits	Recrutas Swadianos
+Swadian Sergeant	Sargento Swadiano
+Swadian Sergeants	Sargentos Swadianos
+Swadian Sharpshooter	Atirador de Precisão Swadiano
+Swadian Sharpshooters	Atiradores de Precisão Swadianos
+Swadian Skirmisher	Escaramuçador Swadiano
+Swadian Skirmishers	Escaramuçadores Swadianos
+Swadian Sniper	Atirador de Longo Alcance Swadiano
+Swadian Snipers	Atiradores de Longo Alcance Swadianos
+Vaegir Archer	Arqueiro Vaegir
+Vaegir Archers	Arqueiros Vaegirs
+Vaegir Deserter	Desertor Vaegir
+Vaegir Deserters	Desertores Vaegirs
+Vaegir Elite Guard	Guarda de Elite Vaegir
+Vaegir Elite Guards	Guardas de Elite Vaegirs
+Vaegir Footman	Soldado de Infantaria Vaegir
+Vaegir Footmen	Soldados de Infantaria Vaegirs
+Vaegir Guard	Guarda Vaegir
+Vaegir Guards	Guardas Vaegirs
+Vaegir Hieromonk	Hieromonge Vaegir
+Vaegir Hieromonks	Hieromonges Vaegirs
+Vaegir Horseman	Cavaleiro Vaegir
+Vaegir Horsemen	Cavaleiros Vaegirs
+Vaegir Infantries	Soldados de Infantaria Vaegirs
+Vaegir Infantry	Infantaria Vaegir
+Vaegir Knight	Cavaleiro Vaegir
+Vaegir Knights	Cavaleiros Vaegirs
+Vaegir Marksman	Atirador de Elite Vaegir
+Vaegir Marksmen	Atiradores de Elite Vaegirs
+Vaegir Masked Knight	Cavaleiro Mascarado Vaegir
+Vaegir Masked Knights	Cavaleiros Mascarados Vaegirs
+Vaegir Messenger	Mensageiro Vaegir
+Vaegir Messengers	Mensageiros Vaegirs
+Vaegir Recruit	Recruta Vaegir
+Vaegir Recruits	Recrutas Vaegirs
+Vaegir Skirmisher	Escaramuçador Vaegir
+Vaegir Skirmishers	Escaramuçadores Vaegirs
+Vaegir Sniper	Atirador de Longo Alcance Vaegir
+Vaegir Snipers	Atiradores de Longo Alcance Vaegirs
+Vaegir Spearman	Lanceiro Vaegir
+Vaegir Spearmen	Lanceiros Vaegirs
+Vaegir Veteran	Veterano Vaegir
+Vaegir Veterans	Veteranos Vaegirs
+Vaegir spearman	Lanceiro Vaegir
+
+# 09 — Feitiços e poderes; expressões completas antes de palavras isoladas
+Magic Missile	Mísseis Mágicos
+Magic missile	Mísseis mágicos
+MAGIC MISSILE	MÍSSEIS MÁGICOS
+Missile Storm	Tempestade de Mísseis
+MISSILE STORM	TEMPESTADE DE MÍSSEIS
+Fireball	Bola de Fogo
+fireball	bola de fogo
+FIREBALL	BOLA DE FOGO
+Cleric Fireball	Bola de Fogo Divina
+Flame Arrow	Flecha Flamejante
+flame arrow	flecha flamejante
+Flame arrow	Flecha flamejante
+FLAME ARROW	FLECHA FLAMEJANTE
+Lightning Bolt	Relâmpago
+lightning bolt	relâmpago
+LIGHTNING BOLT	RELÂMPAGO
+Vampiric Bolt	Raio Vampírico
+Vampiric bolt	Raio vampírico
+VAMPIRIC BOLT	RAIO VAMPÍRICO
+White Bolt	Raio Branco
+White bolt	Raio branco
+WHITE BOLT	RAIO BRANCO
+Black Bolt	Raio Negro
+black bolt	raio negro
+BLACK BOLT	RAIO NEGRO
+Charm Person	Enfeitiçar Pessoa
+CHARM PERSON	ENFEITIÇAR PESSOA
+Shield Spell	Magia de Escudo
+SHIELD SPELL	MAGIA DE ESCUDO
+Diamond Skin	Pele de Diamante
+diamond skin	pele de diamante
+DIAMOND SKIN	PELE DE DIAMANTE
+Magical Weapon	Arma Mágica
+MAGICAL WEAPON	ARMA MÁGICA
+Magical Sword	Espada Mágica
+Magical sword	Espada mágica
+Acid Arrow	Flecha Ácida
+acid arrow	flecha ácida
+Acid arrow	Flecha ácida
+ACID ARROW	FLECHA ÁCIDA
+Dispel Magic	Dissipar Magia
+Dispel	Dissipar
+DISPEL	DISSIPAR
+Darkness	Escuridão
+DARKNESS	ESCURIDÃO
+Haste	Aceleração
+HASTE	ACELERAÇÃO
+Slow	Lentidão
+SLOW	LENTIDÃO
+Chaos	Caos
+CHAOS	CAOS
+Ice Storm	Tempestade de Gelo
+ice storm	tempestade de gelo
+Ice storm	Tempestade de gelo
+ICE STORM	TEMPESTADE DE GELO
+Icestorm	Tempestade de Gelo
+Fire Storm	Tempestade de Fogo
+fire storm	tempestade de fogo
+Fire Burst	Explosão de Fogo
+Flame Strike	Coluna de Chamas
+flame strike	coluna de chamas
+Turn Undead	Expulsar Mortos-vivos
+Lay on Hands	Imposição das Mãos
+Lay Hands	Imposição das Mãos
+lay hands	imposição das mãos
+Protection from Fire	Proteção contra Fogo
+Protection from Cold	Proteção contra Frio
+Heal	Cura
+Harm	Ferir
+Bless	Bênção
+Curse	Maldição
+Terror	Terror
+Regenerate	Regeneração
+REGENERATE	REGENERAÇÃO
+Magic Points	Pontos de Magia
+Faith Points	Pontos de Fé
+faith points	pontos de fé
+Spell Book	Livro de Magias
+spell book	livro de magias
+Spellbook	Livro de Magias
+spellbook	livro de magias
+Prayer Book	Livro de Orações
+spell caster	conjurador
+spellcaster	conjurador
+caster	conjurador
+spell casting	conjuração
+spellcasting	conjuração
+cooldown	tempo de recarga
+area of effect	área de efeito
+Area of effect	Área de efeito
+magic resistance	resistência mágica
+magic damage	dano mágico
+magical damage	dano mágico
+non-magical damage	dano não mágico
+fire damage	dano de fogo
+frost damage	dano de frio
+cold damage	dano de frio
+lightning damage	dano elétrico
+fear effects	efeitos de medo
+magic missile	mísseis mágicos
+haste spell	magia de aceleração
+Haste Spell	Magia de aceleração
+slow spell	magia de lentidão
+Slow spell	Magia de lentidão
+Slow Spell	Magia de lentidão
+shield spell	magia de escudo
+heal spell	magia de cura
+harm spell	magia de ferir
+bless spell	magia de bênção
+curse spell	magia de maldição
+terror spell	magia de terror
+lay on hands	imposição das mãos
+lay Hands	imposição das mãos
+turn Undead	expulsar mortos-vivos
+spells	magias
+Spells	Magias
+spell	magia
+Spell	Magia
+SPELL	MAGIA
+prayers	orações
+prayer	oração
+Prayer	Oração
+mana	mana
+
+# 10 — Pergaminhos e equipamentos mágicos (nomes completos para boa concordância)
+Scroll of Magic Missile	Pergaminho de Mísseis Mágicos
+Scroll of Missile Storm	Pergaminho de Tempestade de Mísseis
+Scroll of Fireball	Pergaminho de Bola de Fogo
+Scroll of Flame Arrow	Pergaminho de Flecha Flamejante
+scroll of flame arrow	pergaminho de flecha flamejante
+Scroll of Lightning Bolt	Pergaminho de Relâmpago
+Scroll of Vampiric Bolt	Pergaminho de Raio Vampírico
+Scroll of White Bolt	Pergaminho de Raio Branco
+Scroll of Black Bolt	Pergaminho de Raio Negro
+Scroll of Charm Person	Pergaminho de Enfeitiçar Pessoa
+Scroll of Shield	Pergaminho de Escudo
+Scroll of Haste	Pergaminho de Aceleração
+Scroll of Slow	Pergaminho de Lentidão
+Scroll of Diamond Skin	Pergaminho de Pele de Diamante
+Scroll of Darkness	Pergaminho de Escuridão
+Scroll of Acid Arrow	Pergaminho de Flecha Ácida
+Scroll of Magical Weapon	Pergaminho de Arma Mágica
+Scroll of Dispel	Pergaminho de Dissipar Magia
+Scroll of Chaos	Pergaminho de Caos
+Scroll of Icestorm	Pergaminho de Tempestade de Gelo
+Holy Symbol	Símbolo Sagrado
+holy symbol	símbolo sagrado
+Unholy Symbol	Símbolo Profano
+Holy Avenger	Vingadora Sagrada
+Mace of Disruption	Maça da Destruição
+Vorpal Sword	Espada Vorpal
+Silver Sword	Espada de Prata
+Spiritual Hammer	Martelo Espiritual
+Spiritual Bastard Sword	Espada Bastarda Espiritual
+Spiritual Sword	Espada Espiritual
+Spiritual Mace	Maça Espiritual
+Spiritual Two-Handed Sword	Espada Espiritual de Duas Mãos
+Silver Golem Bracelet	Bracelete de Golem de Prata
+Necromancer's Staff	Cajado do Necromante
+Gnarled Staff	Cajado Retorcido
+Journeyman Staff	Cajado do Praticante
+Adept Staff	Cajado do Adepto
+Expert Staff	Cajado do Especialista
+Master Staff	Cajado do Mestre
+Archmage Staff	Cajado do Arquimago
+Shaman Staff	Cajado do Xamã
+Elven Staff	Cajado Élfico
+Drow Staff	Cajado Drow
+Snake Staff	Cajado da Serpente
+snake staff	cajado da serpente
+Moon Staff	Cajado Lunar
+Quarter Staff	Bordão
+Iron Staff	Bastão de Ferro
+Spiked Staff	Bastão com Espigões
+Practice Staff	Bastão de Treino
+
+# 11 — Títulos de personagens; os nomes sem título ficam preservados
+Lich King	Rei Lich
+Great Warlord	Grande Senhor da Guerra
+Warlord	Senhor da Guerra
+warlord	senhor da guerra
+Warchief	Chefe de Guerra
+Matriarch	Matriarca
+King	Rei
+king	rei
+Queen	Rainha
+queen	rainha
+Prince	Príncipe
+prince	príncipe
+Princess	Princesa
+princess	princesa
+Count	Conde
+count	conde
+Countess	Condessa
+countess	condessa
+Duke	Duque
+Duchess	Duquesa
+Baron	Barão
+baron	barão
+Baroness	Baronesa
+Boyar	Boiardo
+Lord	Lorde
+lord	lorde
+Lady	Lady
+lady	lady
+Sultan	Sultão
+sultan	sultão
+Sultana	Sultana
+Emir	Emir
+Khan	Khan
+khan	khan
+Noyan	Noyan
+Jarl	Jarl
+Sir	Sir
+sir	sir
+Grandmaster	Grão-Mestre
+Master	Mestre
+master	mestre
+MASTER	MESTRE
+Lady Isolla of Suno	Lady Isolla de Suno
+Prince Valdym the Bastard	Príncipe Valdym, o Bastardo
+Lethwin Far-Seeker	Lethwin, o Visionário
+Lord Kastor of Veluca	Lorde Kastor de Veluca
+Arwa the Pearled One	Arwa, a Perolada
+
+# 12 — Campanha, governo, diplomacia e economia
+Right to Rule	Direito de Governar
+right to rule	direito de governar
+Right to rule	Direito de governar
+Renown	Renome
+renown	renome
+Morale	Moral
+morale	moral
+MORALE	MORAL
+Honor	Honra
+honor	honra
+Controversy	Controvérsia
+controversy	controvérsia
+Party Size	Tamanho do Grupo
+party size	tamanho do grupo
+Party size	Tamanho do grupo
+Party Morale	Moral do Grupo
+party morale	moral do grupo
+your party	seu grupo
+Your party	Seu grupo
 my party	meu grupo
 My party	Meu grupo
-Party of	Grupo de
+the party	o grupo
+the Party	O grupo
+The party	O grupo
 party of	grupo de
+Party of	Grupo de
 party	grupo
+PARTY	GRUPO
 Party	Grupo
-Throwing    Armas de Arremesso #Tirar caso ruim
-Power Draw  Puxada de Arco #Tirar caso ruim
 war band	bando de guerra
-marshals	marechais
-Realm of	Reino de
-deserter	desertor
-peasants	camponeses
-garrison	guarnição
-dungeons	masmorras
-prisoner	prisioneiro
-caravans	caravanas
-Cultists	Cultistas
 warband	bando de guerra
 Warband	Bando de Guerra
-Charge!	Avançar!
-charge!	avançar!
+oath of homage	juramento de vassalagem
+Oath of Homage	Juramento de vassalagem
+liege	suserano
+Liege	Suserano
 vassals	vassalos
-marshal	marechal
-outlaws	fora da lei
-looters	saqueadores
-peasant	camponês
-dungeon	masmorra
-caravan	caravana
-Charge	Carga
-charge	carga
-feasts	banquetes
+Vassals	Vassalos
 vassal	vassalo
-realms	reinos
-renown	renome
-morale	moral
-outlaw	fora da lei
-looter	saqueador
-cattle	gado
-feast	banquete
-melee	combate corpo a corpo
-joust	justa
+Vassal	Vassalo
 fiefs	feudos
-realm	reino
+Fiefs	Feudos
 fief	feudo
-staff	cajado
-staff_no_attack	cajado sem ataque
-throwing	arremesso
-practice_sword	espada de prática
-practice_sword_heavy	espada de prática pesada
-practice_dagger	adaga de prática
-practice_axe	machado de prática
-maceman	homem de maça
-randomize	randomizar
+Fief	Feudo
+realms	reinos
+realm	reino
+Realm	Reino
+marshal	marechal
+Marshal	Marechal
+marshals	marechais
+chamberlain	camareiro
+Chamberlain	Camareiro
+chancellor	chanceler
+Chancellor	Chanceler
+constable	condestável
+Constable	Condestável
+quartermaster	intendente
+village elder	ancião da aldeia
+Village elder	Ancião da aldeia
+Village Elder	Ancião da aldeia
+guild master	mestre da guilda
+Guild Master	Mestre da guilda
+guildmaster	mestre da guilda
+Guildmaster	Mestre da guilda
+ransom broker	negociador de resgates
+Ransom Broker	Negociador de resgates
+tavern keeper	taverneiro
+Tavern Keeper	Taverneiro
+innkeeper	estalajadeiro
+baggage train	comboio de suprimentos
+siege ladder	escada de cerco
+siege tower	torre de cerco
+siege equipment	equipamentos de cerco
+siege	cerco
+Siege	Cerco
+garrisons	guarnições
+Garrisons	Guarnições
+garrison	guarnição
+prisoners	prisioneiros
+Prisoners	Prisioneiros
+prisoner	prisioneiro
+Prisoner	Prisioneiro
+dungeons	masmorras
+dungeon	masmorra
+caravans	caravanas
+Caravans	Caravanas
+caravan	caravana
+Caravan	Caravana
+peasants	camponeses
+Peasants	Camponeses
+peasant	camponês
+Peasant	Camponês
+feasts	banquetes
+feast	banquete
+Feast	Banquete
+tournaments	torneios
+Tournaments	Torneios
+tournament	torneio
+Tournament	Torneio
+TOURNAMENT	TORNEIO
+manhunter	caçador de bandidos
+Manhunter	Caçador de bandidos
+looter	saqueador
+Looter	Saqueador
+deserter	desertor
+Deserter	Desertor
+cattle	gado
+Cattle	Gado
+troop wages	soldos das tropas
+wages	soldos
+Wages	Soldos
+weekly budget	orçamento semanal
+Weekly Budget	Orçamento semanal
+tax inefficiency	ineficiência tributária
+Tax inefficiency	Ineficiência tributária
+prosperity	prosperidade
+Prosperity	Prosperidade
+non-aggression pact	pacto de não agressão
+defensive pact	pacto defensivo
+Defensive Pact	Pacto defensivo
+trade agreement	acordo comercial
+Trade Agreement	Acordo comercial
+truce	trégua
+Truce	Trégua
+alliance	aliança
+Alliance	Aliança
+denars	denares
+Denars	Denares
 denar	denar
-denars	denars
+Surrender or die	Renda-se ou morra
+surrender or die	renda-se ou morra
+
+# 13 — Combate, equipamentos e patentes comuns
+melee damage	dano corpo a corpo
+ranged damage	dano à distância
+melee combat	combate corpo a corpo
+ranged combat	combate à distância
+melee	combate corpo a corpo
+Melee	Combate corpo a corpo
+knocked unconscious	nocauteado
+knocked out	nocauteado
+couched lance damage	dano de lança em riste
+couched lance	lança em riste
+shield bash	golpe de escudo
+Shield Bash	Golpe de escudo
+battle advantage	vantagem em batalha
+Battle Advantage	Vantagem em batalha
+battlefield	campo de batalha
+Battlefield	Campo de batalha
+wounded	ferido
+Wounded	Ferido
+killed	morto
+heavy cavalry	cavalaria pesada
+light cavalry	cavalaria leve
+heavy infantry	infantaria pesada
+Heavy Infantry	Infantaria pesada
+light infantry	infantaria leve
+mounted archer	arqueiro montado
+crossbowman	besteiro
+Crossbowman	Besteiro
+crossbowmen	besteiros
+Crossbowmen	Besteiros
+skirmisher	escaramuçador
+Skirmisher	Escaramuçador
+skirmishers	escaramuçadores
+Skirmishers	Escaramuçadores
 archer	arqueiro
+Archer	Arqueiro
+archers	arqueiros
 swordsman	espadachim
-kingsman	homem do rei
-masterhacker	mestre guerreiro
-hacker	guerreiro
-throwing_daggers	adagas de arremesso
-throwing_knives	facas de arremesso
-throwing_spears	lanças de arremesso
-throwing_hammer	martelo de arremesso
-throwing_scimitar	cimitarra de arremesso
-farmer	fazendeiro
-townsman	cidadão
-female	fêmea
-male	macho
-tutorial	tutorial
-arena	arena
-giant	gigante
-dwarf	anão
-elf	elfo
-naphali	naphali
-novice	novato
-regular	regular
+Swordsman	Espadachim
+swordsmen	espadachins
+Swordsmen	Espadachins
+maceman	soldado de maça
+Maceman	Soldado de maça
+spearman	lanceiro
+Spearman	Lanceiro
+spearmen	lanceiros
+Spearmen	Lanceiros
+pikeman	piqueiro
+pikemen	piqueiros
+footman	soldado de infantaria
+Footman	Soldado de infantaria
+footmen	soldados de infantaria
+Footmen	Soldados de infantaria
+man-at-arms	homem de armas
+men-at-arms	homens de armas
+knight	cavaleiro
+Knight	Cavaleiro
+knights	cavaleiros
+Knights	Cavaleiros
+squire	escudeiro
+Squire	Escudeiro
+recruit	recruta
+Recruit	Recruta
+recruits	recrutas
+Recruits	Recrutas
+militia	milícia
+Militia	Milícia
+mercenary	mercenário
+Mercenary	Mercenário
+mercenaries	mercenários
+Mercenaries	Mercenários
 veteran	veterano
+Veteran	Veterano
 champion	campeão
-fight	lutador
-please	por favor
-Please	Por favor
-human	humano
-Human	Humano
-disabled	desabilitado
-Disabled	Desabilitado
-enabled	ativado
+Champion	Campeão
+novice	noviço
+Novice	Noviço
+NOVICE	NOVIÇO
+apprentice	aprendiz
+Apprentice	Aprendiz
+acolyte	acólito
+Acolyte	Acólito
+initiate	iniciado
+Initiate	Iniciado
+crusader	cruzado
+Crusader	Cruzado
+inquisitor	inquisidor
+Inquisitor	Inquisidor
+hunter	caçador
+Hunter	Caçador
+huntress	caçadora
+Huntress	Caçadora
+scout	batedor
+Scout	Batedor
+assassin	assassino
+Assassin	Assassino
+bastard sword	espada bastarda
+Bastard sword	Espada bastarda
+Bastard Sword	Espada bastarda
+great sword	montante
+Great Sword	Montante
+longsword	espada longa
+short sword	espada curta
+Short Sword	Espada curta
+throwing daggers	adagas de arremesso
+Throwing Daggers	Adagas de arremesso
+throwing knives	facas de arremesso
+Throwing Knives	Facas de arremesso
+throwing spears	lanças de arremesso
+Throwing Spears	Lanças de arremesso
+throwing axes	machados de arremesso
+Throwing Axes	Machados de arremesso
+throwing hammer	martelo de arremesso
+practice sword	espada de treino
+Practice Sword	Espada de treino
+practice dagger	adaga de treino
+Practice Dagger	Adaga de treino
+practice axe	machado de treino
+Practice Axe	Machado de treino
+heavy armor	armadura pesada
+light armor	armadura leve
+chainmail	cota de malha
+plate armor	armadura de placas
+Plate Armor	Armadura de placas
+warhorse	cavalo de guerra
+Warhorse	Cavalo de guerra
+joust	justa
+
+# 14 — Rótulos de interface e criação de personagem sem termos biológicos inadequados
+Male Human	Humano
+Female Human	Humana
+Male Elf	Elfo
+Female Elf	Elfa
+Male Drow	Drow Masculino
+Female Drow	Drow Feminina
+Male Dwarf	Anão
+Female Dwarf	Anã
+Male Orc	Orc Masculino
+Female Orc	Orc Feminina
 Enabled	Ativado
-start_female	fêmea
-female_human	humana
-male_human	humano
-female_dwarven	anã
-male_dwarven	anão
-female_giant	gigante
-male_giant	gigante
-female_elf	elfa
-male_elf	elfo
-female_naphali	naphali
-male_naphali	naphali
-dwarven	anão
+enabled	ativado
+ENABLED	ATIVADO
+Disabled	Desativado
+disabled	desativado
+Enable	Ativar
+enable	ativar
+Disable	Desativar
+Randomize	Aleatorizar
+randomize	aleatorizar
+Character	Personagem
+character	personagem
+Companions	Companheiros
+companions	companheiros
+Companion	Companheiro
+companion	companheiro
+Inventory	Inventário
+inventory	inventário
+Equipment	Equipamento
+equipment	equipamento
+Quests	Missões
+quests	missões
+Quest	Missão
+quest	missão
+Reports	Relatórios
+reports	relatórios
+Notes	Notas
+notes	notas
+Camp	Acampamento
+camp	acampamento
+CAMP	ACAMPAMENTO
+Skills	Habilidades
+skills	habilidades
+SKILLS	HABILIDADES
+Attributes	Atributos
+attributes	atributos
+
+# Rótulos exatos das raças na interface; manter m/f compreensível em PT-BR.
+undead m	Morto-vivo Masculino
+elf m	Elfo
+elf f	Elfa
+drow m	Drow Masculino
+drow f	Drow Feminina
+dwarf m	Anão
+dwarf f	Anã
+orc m	Orc Masculino
+orc f	Orc Feminina
+skeleton f	Esqueleto Feminino
+shadow m	Sombra Masculina
+golem m	Golem Masculino
+zombie m	Zumbi Masculino
+demon m	Demônio Masculino

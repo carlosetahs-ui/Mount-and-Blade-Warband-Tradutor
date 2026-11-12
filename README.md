@@ -33,7 +33,7 @@ O tradutor processa a estrutura nativa de localização (`Modules/<Mod>/language
 
 ## ✨ Destaques do Projeto
 
-- 🔒 **Blindagem Total da Engine:** Garante que nenhuma variável do Warband (`{playername}`, `{s0}`, `{reg1}`, etc.) seja apagada ou corrompida durante a tradução.
+- 🔒 **Proteção dos códigos da engine:** Mascara e valida as variáveis do Warband (`{playername}`, `{s0}`, `{reg1}`, etc.) antes de aceitar uma tradução.
 - 💾 **Cache SQLite Persistente:** Gravação em tempo real a cada frase concluída (`cache.sqlite`). Você pode pausar com `Ctrl + C` e retomar sem retraduzir nada.
 - 🔄 **Reaproveitamento entre Backends:** Comece traduzindo com um motor e continue com outro sem perder o progresso já salvo (`reuse_cache_from = "auto"`).
 - 📖 **Glossário e Preservação de Nomes:**
@@ -53,12 +53,14 @@ Arquivos de localização do Warband seguem o padrão rígido `id|texto`. Qualqu
 - **Variáveis de Script e Registradores:** `{playername}`, `{s0}`, `{s1}`, `{reg1}`, `{reg12}`, etc.
 - **Quebras de Linha do Warband:** `^` (símbolo nativo da engine para quebra de linha em diálogos) e `\n`.
 - **Tags de Cores do WSE2 / Warband:** `<c=0x...>` e `</c>`.
-- **Formatações de Número e Porcentagem:** `%d`, `%s`, `%d%%`.
+- **Formatações de Número e Porcentagem:** `%d`, `%s`, `%d%%`, `%.2f`, `%08d`, `%lld` e outros formatos printf com flags, largura e precisão. Argumentos sem índice mantêm sua ordem, inclusive entre condições e texto externo. Argumentos explicitamente indexados, como `%2$s`, podem mudar de posição quando largura e precisão também usam índices explícitos.
 - **Condicionais e Flexões de Gênero:** `{sir/madam}`, `{his/her}`, `{reg1?men:man}` têm apenas os ramos textuais traduzidos, mantendo a estrutura lógica original.
+- **Expressões aninhadas:** um scanner iterativo protege o bloco completo, sem o antigo limite de três níveis de chaves. O texto interno de expressões complexas permanece no original; o texto externo continua traduzível.
+- **IDs e estrutura do CSV:** o prefixo antes do primeiro `|` nunca passa pelo motor, pelo glossário ou pela revisão. A escrita compara IDs, quantidade e ordem das linhas com o original.
 
 ### 2. Os 3 Planos de Execução:
 1. **Plano A (Tokenização Integral):** Os códigos viram tokens neutros numerados (`⟦0⟧`, `⟦1⟧`, etc.) e a frase é enviada inteira ao motor para preservar o contexto.
-2. **Plano B (Detecção e Rotação):** Se o motor suprimir ou duplicar tokens, a tradução é descartada e enviada a outro provedor configurado.
+2. **Plano B (Detecção e Rotação):** Se o motor suprimir ou duplicar tokens, alterar a ordem dos argumentos ou danificar condições e cores, a tradução é descartada e enviada a outro provedor configurado.
 3. **Plano C (Tradução Cirúrgica de Fragmentos):** Em casos complexos, a frase é fatiada entre os códigos, traduzindo unicamente o texto puro e remontando a estrutura exata com as variáveis intactas.
 
 ---
@@ -132,6 +134,7 @@ target_lang = "pt"        # Pasta gerada: languages/pt
 output = "saida"          # Pasta onde os arquivos traduzidos serão gravados
 install = false           # Se true, escreve direto na pasta do mod
 keep_existing = true      # Mantém frases que você já traduziu na pasta de saída
+checkpoint_every = 25     # Salva o CSV a cada N linhas processadas; Ctrl+C também salva
 translate_gender_choices = true  # Traduz escolhas como {sir/madam}
 skip_files = []           # Arquivos a ignorar, ex: ["item_modifiers.csv"]
 skip_ids = []             # Regex de IDs para pular
@@ -175,33 +178,73 @@ backends = ["argos"]               # Aplica revisão apenas nestes backends (vaz
 > 💡 **Dica para caminhos no Windows:**  
 > Se a pasta do mod tiver caracteres especiais ou espaços complexos, você pode simplesmente copiar a pasta `languages` do mod para dentro do diretório do tradutor e definir `path = '.'` no `config.toml`.
 
+### Validação, integridade e retomada
 
-🚀 Comandos e Modo de Uso
-1. Diagnóstico do Mod (scan)
-Analisa a quantidade de arquivos, linhas totais, variáveis protegidas e tempo estimado:
+- Todos os caminhos relativos, inclusive `mod.path`, são resolvidos a partir da pasta do arquivo de configuração. O TOML pode estar em UTF-8 com ou sem BOM.
+- Opções inválidas, expressões de `skip_ids` incorretas, arquivos não encontrados e tentativas de usar a própria pasta de origem como saída produzem uma mensagem de erro antes da tradução.
+- A revisão de português atua sobre o texto com os códigos e termos do glossário protegidos. As escolhas isoladas, como `{lord/lady}`, também são traduzidas, e o glossário é aplicado dentro delas. Condições aninhadas com chaves internas continuam preservadas no original.
+- O glossário só atua nos trechos de texto fora dos códigos e tokens literais. Uma entrada que atravesse uma variável ou expressão não pode substituir esse bloco. Condições repetidas do mesmo seletor conservam a ordem de suas ocorrências e a estrutura individual de cada ramo; seus códigos não podem ser redistribuídos entre ocorrências.
+- Candidatas só entram no cache depois da validação estrutural e da revisão correspondentes. Respostas antigas que alterem a ordem dos argumentos são ignoradas e consultadas novamente no motor. Delimitadores reservados introduzidos nos ramos traduzidos são normalizados somente no texto, preservando os códigos.
+- Arquivos com NUL ou codificação UTF-16/UTF-32 são recusados; use UTF-8 ou Windows-1252. CRs isolados também são apontados, em vez de desaparecerem durante a leitura. O comando `check` detecta IDs fora da ordem original.
+- Textos maiores que `max_chars` são divididos em trechos que respeitam o limite do serviço web, mesmo quando não contêm variáveis do jogo.
+- Com `keep_existing = true`, traduções existentes são verificadas antes da reutilização. Linhas com códigos danificados são refeitas. Ao pressionar `Ctrl+C`, o CSV em andamento e o cache são salvos; execute o mesmo comando para continuar.
+- Antes de iniciar o motor, todo o lote selecionado é lido e verificado quanto a IDs vazios ou repetidos. Um erro num CSV posterior é informado antes de baixar modelos ou substituir traduções anteriores.
+- O cache registra a origem das linhas gravadas. Se o mod mudar o texto de um ID, ou o idioma de destino mudar, a próxima execução refaz a tradução correspondente. Falhas parciais em escolhas como `{lord/lady}` também são tentadas novamente. Mantenha o mesmo arquivo de cache para conservar esse histórico.
+- Nas linhas geradas a partir desta versão, o histórico também identifica a saída e as regras usadas. Alterar o glossário, o conteúdo das substituições, o contexto ou a revisão atualiza as traduções automáticas. Com `--limit`, traduções posteriores continuam no arquivo com o histórico anterior até serem atualizadas em outra execução.
+- Com `keep_existing = true`, uma edição manual válida é preservada nas mudanças de glossário ou revisão, desde que sua origem e idioma continuem iguais. Traduções importadas e históricos antigos sem identificação da saída também são preservados. Use `keep_existing = false` para refazer explicitamente essas linhas. A migração do cache mantém as entradas anteriores.
+- A ordem das tags de cor é validada, inclusive dentro de escolhas e condições. Se o motor inverter abertura e fechamento, os planos alternativos tentam recuperar a tradução.
+- `max_retries` limita as tentativas extras de cada pedido, incluindo bloqueios 429/403. Se todos os serviços estiverem em cooldown, o tradutor aguarda um deles ficar disponível antes da próxima tentativa.
+- O cache separa os pares de idiomas e mantém a compatibilidade com o cache anterior de inglês para português. Use `reuse_cache_from = "none"` para consultar apenas o motor atual.
+- No Ollama, o destino padrão acompanha `engine.target_code` (ou `mod.target_lang` quando o código não foi informado). `target_name` permite definir um nome de idioma explícito e é considerado na identificação do cache. Com `reuse_cache_from = "none"`, servidores Ollama diferentes têm caches separados; nesse modo, entradas Ollama antigas sem identificação de servidor deixam de ser consultadas. O modo `auto` continua permitindo reaproveitamento entre motores.
+- As aspas da resposta Ollama são preservadas, inclusive quando não é possível distinguir pontuação do diálogo de aspas externas acrescentadas pelo modelo. Respostas de cache produzidas pela antiga limpeza de aspas deixam de ser reutilizadas nesse backend.
+- O Argos verifica se há uma tradução instalada na direção solicitada, incluindo caminhos por idiomas intermediários. Quando falta um modelo utilizável, o erro é informado na inicialização. Com `auto_install = false`, nenhum catálogo ou pacote é baixado.
+- Entradas de glossário sem TAB ou `=` geram avisos com arquivo e número da linha. Linhas em branco e comentários são ignorados.
+- O arquivo de substituições também avisa sobre linhas malformadas e originais vazios. Um valor de destino vazio continua permitido para remover uma palavra.
+
+## 🚀 Comandos e Modo de Uso
+
+Analise arquivos, linhas, variáveis e tempo estimado, sem chamar um motor de tradução:
+
+```bash
 python mbtr.py scan --config config.toml
+```
 
-2. Gerar Sugestões de Nomes para o Glossário (glossary)
-Extrai automaticamente nomes de facções, tropas, castelos e itens para você alimentar o nomes.txt:
+Gere sugestões de nomes de facções, tropas, castelos e itens para revisar e incorporar ao glossário:
+
+```bash
 python mbtr.py glossary --config config.toml
+```
 
-3. Teste Rápido com Limite (--limit)
-Traduz apenas as primeiras 30 linhas pendentes para validar o funcionamento do motor:
+Teste o motor com até 30 linhas pendentes. `--limit` aceita apenas inteiros positivos:
+
+```bash
 python mbtr.py translate --config config.toml --limit 30
+```
 
-4. Traduzir um Arquivo Específico (--file)
-Foca a execução em um único arquivo de interesse (ex: diálogos):
+Traduza um arquivo específico. `--file` também funciona com `scan`, `check` e `glossary`:
+
+```bash
 python mbtr.py translate --config config.toml --file dialogs.csv
+```
 
-5. Tradução Completa
-Inicia a tradução de todos os arquivos:
+Traduza todos os arquivos selecionados:
+
+```bash
 python mbtr.py translate --config config.toml
-(Pode ser interrompido com Ctrl + C a qualquer instante sem perda de progresso).
+```
 
-6. Verificação de Integridade (check)
-Varre os arquivos gerados para garantir que nenhuma linha nem código foi esquecido ou corrompido:
+Verifique arquivos e IDs ausentes, IDs extras ou repetidos, traduções vazias, códigos alterados e condições corrompidas:
+
+```bash
 python mbtr.py check --config config.toml
+python mbtr.py check --config config.toml --file dialogs.csv
+```
 
+O relatório também consulta o histórico disponível, sem criar ou modificar o cache, para apontar origem ou idioma alterados, falhas parciais e regras desatualizadas em saídas automáticas. Esses casos retornam erro. Sem histórico, a verificação continua avaliando a estrutura dos arquivos.
+
+O relatório conta linhas inalteradas com texto possivelmente pendente, desconsiderando IDs ignorados e nomes totalmente protegidos pelo glossário. Texto idêntico ao original não comprova qual idioma está sendo usado.
+
+Os comandos retornam `0` em caso de sucesso e `1` em caso de erro. `translate` também retorna `1` quando alguma tradução falha e mantém o original; uma interrupção por `Ctrl+C` retorna `130`. Argumentos inválidos retornam `2`.
 
 📊 Entendendo a Barra de Progresso
 Durante a execução, o terminal exibe o status detalhado em tempo real:
@@ -228,7 +271,7 @@ No inicializador do Warband (Launcher), vá em Configure > Game > Language e sel
 Ou altere diretamente em Documentos/Mount&Blade Warband/language.txt escrevendo pt.
 
 
-� Sistema de Revisão Pós-Tradução
+## 📝 Sistema de Revisão Pós-Tradução
 O tradutor inclui um sistema automático de revisão que corrige inconsistências comuns após a tradução:
 
 Correções Automáticas PT-PT → PT-BR:
@@ -236,6 +279,8 @@ Vocabulário: partilhar → compartilhar, equipa → equipe, facto → fato, ecr
 Grafias antigas pré-acordo ortográfico: acção → ação, direcção → direção, protecção → proteção, etc.
 Gerúndios: está a fazer → está fazendo
 Pronomes enclíticos: impressionam-me → me impressionam (no meio da frase)
+
+A conversão de gerúndios usa uma lista de verbos conhecidos. Palavras ambíguas ou desconhecidas permanecem intactas para evitar alterações como “está a mulher” → “está mulhendo”. As correções PT-BR só se aplicam ao destino português (`pt` ou `pt-BR`, incluindo `pt_BR`); as substituições personalizadas continuam disponíveis em outros idiomas nos backends selecionados.
 
 Substituições Personalizadas:
 Crie um arquivo substituicoes.txt com o formato errado = certo (ou tabulação) para adicionar suas próprias correções:
@@ -259,7 +304,7 @@ Opções de backends:
 - ["argos", "translators"] - Aplica em múltiplos backends
 
 
-�🔧 Solução de Problemas Comuns (Troubleshooting)
+## 🔧 Solução de Problemas Comuns (Troubleshooting)
 1. Caracteres acentuados cortados ou invisíveis (Fontes customizadas)
 Muitos mods de fantasia ou medievais (Perisno, Prophesy of Pendor, etc.) incluem fontes temáticas próprias (font.dds) que não possuem os glifos acentuados da língua portuguesa (ã, é, ç, etc.).
 Solução Segura (Fallback para a Fonte Padrão):
@@ -270,9 +315,9 @@ O mod passará a carregar a fonte original do Warband, garantindo exibição per
 
 
 2. Erro de caminho no Windows (FileNotFoundError)
-Se o terminal apresentar erro ao tentar abrir arquivos dentro de pastas que contenham o caractere & (ex: M&B) ou acentos:
-Mova o script para uma pasta com caminho simples (ex: C:\mb_tradutor); ou
-Copie a pasta languages do mod para dentro do tradutor e use path = '.' no config.toml.
+Confira se `mod.path` aponta para a pasta que contém `languages/en`, e não para o executável do jogo ou para a própria pasta `en`. Espaços, acentos e `&` são aceitos nos caminhos. No TOML, use aspas simples para caminhos do Windows, como `path = 'D:\Jogos\Mount & Blade\Modules\Meu Mod'`.
+
+Se usar um caminho relativo, ele parte da pasta de `config.toml`, mesmo quando o comando é executado de outro diretório. Também é possível copiar a pasta `languages` para junto da configuração e usar `path = '.'`.
 
 
 3. Mod sem pasta `languages/en`
@@ -321,5 +366,10 @@ mb_tradutor/
 
 
 🧪 Testes Automatizados
-Para rodar a bateria de testes e garantir que o ambiente está operando corretamente:
+Para rodar a bateria de testes:
+
+```bash
 python -m unittest discover -s tests
+```
+
+Os testes usam motores simulados e mods temporários, sem acessar serviços de tradução. Cobrem IDs e formato CSV, proteção de códigos e glossário, expressões profundamente aninhadas, ordem de printf e cores, condições repetidas, limites e rotação dos provedores, instalação do Argos, idiomas e aspas do Ollama, migração do cache, preservação de edições manuais, atualização de glossário e revisão, configuração, interrupção, atualização do mod, retomada de falhas parciais e gravação atômica. A qualidade linguística de um motor real deve ser conferida com uma tradução curta e revisão no jogo.
